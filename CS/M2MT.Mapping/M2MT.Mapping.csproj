@@ -11,7 +11,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\M2MT.Core\M2MT.Shared.csproj" />
+    <ProjectReference Include="..\M2MT.Share.Repository.MappingCRUD\M2MT.Shared.Repository.MappingCRUD.csproj" />
+    <ProjectReference Include="..\M2MT.Shared.Repository.ModelRead\M2MT.Shared.Repository.ModelRead.csproj" />
+    <ProjectReference Include="..\M2MT.Shared.Service.MappingCRUD\M2MT.Shared.Service.MappingCRUD.csproj" />
+    <ProjectReference Include="..\M2MT.Shared.Service.ModelCRUD\M2MT.Shared.Service.ModelCRUD.csproj" />
   </ItemGroup>
 
 </Project>

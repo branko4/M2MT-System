@@ -5,4 +5,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\M2MT.Core\M2MT.Shared.csproj" />
+  </ItemGroup>
+
 </Project>

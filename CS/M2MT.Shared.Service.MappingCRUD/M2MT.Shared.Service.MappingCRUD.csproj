@@ -5,4 +5,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\M2MT.Core\M2MT.Shared.csproj" />
+    <ProjectReference Include="..\M2MT.Shared.Service.MappingRead\M2MT.Shared.Service.MappingRead.csproj" />
+  </ItemGroup>
+
 </Project>
