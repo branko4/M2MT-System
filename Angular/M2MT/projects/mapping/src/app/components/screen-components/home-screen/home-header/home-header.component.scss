@@ -1,3 +1,7 @@
+@import '../home-screen-shared';
+
+// logo is 80x21, those to make it fit at maximum it is multiplied
+// margin-top -bottom auto will vertically center the element
 #logo-pr {
   background: url(https://www.prorail.nl/static/prorail/img/logo_default.svg) no-repeat;
   background-size: 100%;
@@ -7,6 +11,8 @@
   margin-bottom: auto;
 }
 
+// logo is 400px x 93px, those to get it between 50px it needs to be devided
+// margin-top -bottom auto will vertically center the element
 #logo-eulynx {
   background: url(https://www.eulynx.eu/images/eulinx/eulynx-logo.png) no-repeat;
   background-size: 100%;
@@ -22,9 +28,9 @@
 
 header {
   width: 100vw;
-  height: 50px;
-  background-color: white;
-  border-bottom: solid 1px gray;
+  height: $home-nav-real-height;
+  background-color: $background-primary;
+  // border-bottom: solid $home-nav-border-height gray;
 }
 
 .centered-items {
@@ -35,7 +41,7 @@ header {
 }
 
 .top-header {
-  height: 50px;
+  height: $home-nav-real-height;
 }
 
 // .bottom-header {

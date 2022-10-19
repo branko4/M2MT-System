@@ -1,8 +1,14 @@
+@import './home-screen-shared';
+
+
+$padding-height: 10vh;
+$padding-width: 20vh;
+
 main {
   margin: 0;
-  padding: 10vh 20vw;
-  background-color: var(--primary-color-accent, rgb(0, 255, 213));
-  min-height: calc(80vh - 51px);
+  padding: $padding-height $padding-width;
+  background-color: $background-secundary;
+  min-height: calc((100vh - 2 * $padding-height) - $home-nav-height);
 }
 
 h1 {
@@ -20,9 +26,9 @@ h1 {
 }
 
 .button {
-  background-color: var(--primary-color, #3f51b5);
+  background-color: $primary-accent;
   border-radius: 10px;
-  border: var(--primary-color-accent, rgb(172, 172, 172)) solid 2px;
+  border: $primary solid 2px;
   cursor: pointer;
   padding: 15px;
   font-weight: bold;
