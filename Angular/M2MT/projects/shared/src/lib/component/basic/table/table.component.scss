@@ -1,0 +1,54 @@
+@import '../../../variables';
+
+$padding: 5px;
+
+table {
+  width: 100%;
+  border: solid 1px $theme-primary;
+}
+
+th, td {
+  padding: $padding;
+  
+  &:first-child {
+    border-left: none;
+  }
+}
+
+thead tr {
+  background-color: $theme-primary;
+  color: $theme-secundary;
+}
+
+// tbody:nth-child(odd)
+tbody tr
+{
+  &:nth-child(odd) {
+    background-color: $theme-primary-accent;
+    color: $theme-secundary;
+
+    // & .column {
+    //   border-left-color: $theme-primary;
+    // }
+  }
+
+  &:nth-child(even) {
+    background-color: $theme-primary-negative-accent;
+    color: $theme-secundary;
+
+    // & .column {
+    //   border-left-color: $theme-primary-accent;
+    // }
+  }
+}
+
+.column {
+  border-left-color: $theme-primary-accent;
+  padding: $padding;
+  border-left: 2px solid $theme-primary;
+  text-align: left;
+}
+
+td:first-child .column, th:first-child .column {
+  border-left: none;
+}

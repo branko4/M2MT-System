@@ -1,6 +1,5 @@
-@import '../../../variables';
+@import '../../../../../../shared/src/lib/variables';
 
-$home-nav-real-height: 70px;
-$home-nav-border-height: 1px;
+$home-nav-real-height: $nav-real-height;
 
 $home-nav-height: ($home-nav-real-height);

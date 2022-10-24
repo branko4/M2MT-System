@@ -1,0 +1,91 @@
+// colors
+$primary: var(--primary-color,  rgb(232,221,17));
+$primary-accent: var(--primary-accent-color, rgb(255,255,175));
+$secundary: var(--secundary-color, rgb(0,143,215));
+$secundary-accent: var(--secundary-accent-color, rgb(159,218,247));
+
+$dark-color: #2c2a3b;
+$dark-accent-color: #353444;
+$dark-light-accent-color: #312f40;
+$dark: var(--dark-color, $dark-color);
+$dark-accent: var(--dark-accent-color, $dark-accent-color);
+$dark-light-accent: var(--dark-light-accent-color, $dark-light-accent-color);
+$theme-primary: var(--theme-primary, $dark);
+$theme-primary-accent: var(--theme-primary-accent, $dark-accent);
+$theme-primary-negative-accent: var(--theme-primary-negative-accent, $dark-light-accent);
+
+$light-color: white;
+$light-accent-color: lightgray;
+$light: var(--light-color, $light-color);
+$light-accent: var(--light-accent-color, $light-accent-color);
+$theme-secundary: var(--theme-secundary-color, $light);
+$theme-secundary-accent: var(--theme-secundary-accent-color, $light-accent);
+
+// nav bar
+$nav-real-height: 70px;
+$nav-height: ($nav-real-height);
+
+// Footer
+$footer-height: 20px;
+
+// style
+$danger: var(--danger-color, red);
+
+.button, .text-button {  
+  cursor: pointer;
+  font-size: 1em;
+  text-decoration: none;
+  background-color: transparent;
+  border: none;
+
+  &.primary {
+    color: $primary;
+  }
+
+  &.secundary {
+    color: $secundary;
+  }
+
+  &.danger {
+    color: $danger;
+  }
+}
+
+.button {
+  border-radius: 10px;
+  border: $primary solid 2px;
+  font-weight: bold;
+  padding: 7px 10px;
+  color: $dark;
+
+  &.primary {
+    background-color: $primary;
+    color: $dark;
+  }
+
+  &.secundary {
+    background-color: $secundary;
+    border-color: $secundary;
+    color: $dark;
+  }
+
+  &.danger {
+    background-color: $danger;
+    border-color: $danger;
+    color: $light;
+  }
+}
+
+// defaults
+$main-width: 1000px;
+$main-margin: 25px;
+
+main {
+  width: $main-width;
+  min-height: calc(100vh - ($nav-height + $footer-height + 2 * $main-margin));
+  margin: $main-margin auto;
+}
+
+lib-table {
+  display: block;
+}

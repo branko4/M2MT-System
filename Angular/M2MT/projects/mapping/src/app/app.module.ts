@@ -26,6 +26,8 @@ import { ElementListSelectorComponent }           from './components/element-com
 import { ElementTaxonomySelectorComponent }       from './components/element-components/select-element/element-taxonomy-selector/element-taxonomy-selector.component';
 import { EmptyElementComponent }                  from './components/element-components/select-element/empty-element/empty-element.component';
 
+import { SharedModule }                           from 'projects/shared/src/public-api';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +56,8 @@ import { EmptyElementComponent }                  from './components/element-com
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

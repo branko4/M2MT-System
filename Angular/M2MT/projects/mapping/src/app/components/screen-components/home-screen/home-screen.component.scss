@@ -7,8 +7,9 @@ $padding-width: 20vh;
 main {
   margin: 0;
   padding: $padding-height $padding-width;
-  background-color: $background-secundary;
-  min-height: calc((100vh - 2 * $padding-height) - $home-nav-height);
+  background-color: $theme-primary-accent;
+  min-height: calc((100vh - 2 * $padding-height) - ($home-nav-height + $footer-height));
+  width: calc(100vw - 2*$padding-width);
 }
 
 h1 {
@@ -23,16 +24,4 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.button {
-  background-color: $primary-accent;
-  border-radius: 10px;
-  border: $primary solid 2px;
-  cursor: pointer;
-  padding: 15px;
-  font-weight: bold;
-  font-size: 1.2em;
-  text-decoration: none;
-  color: black;
 }
