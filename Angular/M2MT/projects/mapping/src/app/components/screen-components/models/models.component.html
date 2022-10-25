@@ -1,1 +1,4 @@
-<p>models-component works!</p>
+<h2>Select model</h2>
+<select name="model">
+  <option *ngFor="let model of models" value="{{model.ID}},{{model.ID}}">{{model.name}}</option>
+</select>

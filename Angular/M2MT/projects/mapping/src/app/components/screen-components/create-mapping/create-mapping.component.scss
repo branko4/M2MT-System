@@ -1,0 +1,12 @@
+@import '../../../../../../shared/src/lib/variables';
+
+h2 { 
+  margin: 0;
+  text-align: center;
+}
+
+header {
+  padding: 20px;
+  background-color: $theme-primary;
+  border-radius: $border-radius $border-radius 0 0;
+}

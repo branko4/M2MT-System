@@ -28,6 +28,9 @@ $nav-height: ($nav-real-height);
 // Footer
 $footer-height: 20px;
 
+// generic layout
+$border-radius: 15px;
+
 // style
 $danger: var(--danger-color, red);
 
@@ -48,6 +51,11 @@ $danger: var(--danger-color, red);
 
   &.danger {
     color: $danger;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
   }
 }
 

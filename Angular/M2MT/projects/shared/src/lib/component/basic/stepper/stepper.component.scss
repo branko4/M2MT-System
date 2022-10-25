@@ -1,0 +1,46 @@
+@import '../../../variables';
+
+
+$z-index-line: 9;
+
+.stepper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  z-index: ($z-index-line + 1);
+}
+
+.container {
+  padding: 10px;
+}
+
+$border-thickness: 1px;
+
+.line {
+  border: $border-thickness solid $theme-primary;
+  height: 0;
+  position: relative;
+  top: ($border-radius + $border-thickness);
+  left: 0;
+  right: 0;
+  z-index: $z-index-line;
+}
+
+.step {
+  border-radius: $border-radius;
+  border: $border-thickness solid $theme-primary;
+  width: (2 * $border-radius);
+  height: (2 * $border-radius);
+  background-color: $theme-secundary;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $theme-primary;
+
+  &.active {
+    background-color: $theme-secundary-accent;
+  }
+}

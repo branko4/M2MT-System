@@ -1,1 +1,11 @@
-<p>create-mapping-component works!</p>
+<lib-pop-up (backgroundClick)="test($event)">
+  <header>
+    <h2>Create mapping component</h2>
+  </header>
+  
+  <lib-stepper [steps]="steps"></lib-stepper>
+  <hr/>
+  
+  <button class="danger text-button" (click)="cancel()">Cancel</button>
+  <button class="primary button" (click)="create()">Create</button>
+</lib-pop-up>
