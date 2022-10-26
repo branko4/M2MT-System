@@ -1,11 +1,45 @@
-<lib-pop-up (backgroundClick)="test($event)">
+<lib-pop-up (backgroundClick)="cancel()">
   <header>
     <h2>Create mapping component</h2>
   </header>
   
-  <lib-stepper [steps]="steps"></lib-stepper>
+  <table cellspacing="5">
+    <tr>
+      <td>
+        <label for="model-from">
+          select model for side from
+        </label>
+      </td>
+      <td>
+        <app-models [(model)]="mapping.modelFrom" name="model-from" (modelChange)="onFormDataChanged()"></app-models>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label for="model-to">
+          selet model for side to
+        </label>
+      </td>
+      <td>
+        <app-models [(model)]="mapping.modelTo" name="model-to" (modelChange)="onFormDataChanged()"></app-models>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label for="name">
+          Name of mapping
+        </label>
+      </td>
+      <td>
+        <input type="text" name="name" [(ngModel)]="mapping.name" (ngModelChange)="onFormDataChanged()">
+      </td>
+    </tr>
+  </table>
+
   <hr/>
   
-  <button class="danger text-button" (click)="cancel()">Cancel</button>
-  <button class="primary button" (click)="create()">Create</button>
+  <div class="control">
+    <button class="danger text-button" (click)="cancel()">Cancel</button>
+    <button class="primary button" (click)="create()" [disabled]="creatable">Create</button>
+  </div>
 </lib-pop-up>

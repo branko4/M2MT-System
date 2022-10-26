@@ -1,8 +1,6 @@
-import { Component, Type } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { StepComponent } from 'projects/shared/src/public-api';
-import { SelectElementComponent } from '../../element-components/select-element/select-element.component';
-import { ModelsComponent } from '../models/models.component';
+import { CreateMappingDTO } from '../../../dto/create-mapping.dto';
 
 @Component({
   selector: 'app-create-mapping',
@@ -10,12 +8,23 @@ import { ModelsComponent } from '../models/models.component';
   styleUrls: ['./create-mapping.component.scss']
 })
 export class CreateMappingComponent {
-  steps: Type<StepComponent>[] = [ ModelsComponent, ModelsComponent, SelectElementComponent ];
+  mapping: CreateMappingDTO = {};
+  creatable = this.stateIsInvalid();
 
   constructor(private router: Router, private route: ActivatedRoute) { }
 
-  test(event: boolean) {
-    if (event) this.cancel();
+  onFormDataChanged() {
+    this.creatable = this.stateIsInvalid();
+  }
+
+  stateIsInvalid(): boolean {
+    // since the hash represents the entire object and both objects should contain the same data, it should be enhoug to verify the hash
+    return !(
+          this.mapping.modelFrom?.hash  !== this.mapping.modelTo?.hash 
+    &&    this.mapping.modelFrom  !== undefined 
+    &&    this.mapping.modelTo    !== undefined 
+    &&    this.mapping.name       !== undefined
+    );
   }
 
   cancel() {
@@ -23,6 +32,7 @@ export class CreateMappingComponent {
   }
 
   create() {
+    if (this.stateIsInvalid()) return;
     this.router.navigate(['..','new'], {relativeTo: this.route});
   }
 }

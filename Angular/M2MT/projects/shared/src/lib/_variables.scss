@@ -30,6 +30,7 @@ $footer-height: 20px;
 
 // generic layout
 $border-radius: 15px;
+$padding: 7px 10px;
 
 // style
 $danger: var(--danger-color, red);
@@ -63,7 +64,7 @@ $danger: var(--danger-color, red);
   border-radius: 10px;
   border: $primary solid 2px;
   font-weight: bold;
-  padding: 7px 10px;
+  padding: $padding;
   color: $dark;
 
   &.primary {
@@ -82,6 +83,23 @@ $danger: var(--danger-color, red);
     border-color: $danger;
     color: $light;
   }
+}
+
+select {
+  width: 100%;
+}
+
+// chrome overwrites the input style, when autofilled, therefore the :-internal-autofill-selected was tried to overwrite chrome, but it did not work ಠ_ಠ
+input, select, input:-internal-autofill-selected {
+  background-color: $primary-accent !important;
+  padding: $padding;
+  border: solid $primary 1px;
+  color: $dark !important;
+}
+
+option {
+  background-color: $primary-accent;
+  font-size: 1.2em;
 }
 
 // defaults

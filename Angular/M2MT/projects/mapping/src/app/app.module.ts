@@ -1,5 +1,7 @@
 import { NgModule }                               from '@angular/core';
 import { BrowserModule }                          from '@angular/platform-browser';
+import { FormsModule }                            from '@angular/forms';
+import { SharedModule }                           from 'projects/shared/src/public-api';
 
 import { AppRoutingModule }                       from './app-routing.module';
 import { AppComponent }                           from './app.component';
@@ -25,8 +27,6 @@ import { SelectElementComponent }                 from './components/element-com
 import { ElementListSelectorComponent }           from './components/element-components/select-element/element-list-selector/element-list-selector.component';
 import { ElementTaxonomySelectorComponent }       from './components/element-components/select-element/element-taxonomy-selector/element-taxonomy-selector.component';
 import { EmptyElementComponent }                  from './components/element-components/select-element/empty-element/empty-element.component';
-
-import { SharedModule }                           from 'projects/shared/src/public-api';
 
 @NgModule({
   declarations: [
@@ -58,6 +58,7 @@ import { SharedModule }                           from 'projects/shared/src/publ
     BrowserModule,
     AppRoutingModule,
     SharedModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

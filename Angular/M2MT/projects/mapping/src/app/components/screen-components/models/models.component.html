@@ -1,4 +1,5 @@
-<h2>Select model</h2>
-<select name="model">
-  <option *ngFor="let model of models" value="{{model.ID}},{{model.ID}}">{{model.name}}</option>
+<select name="{{name}}" [(ngModel)]="model" (click)="modelSelected()">
+  <option *ngFor="let protectedModel of models" [ngValue]="protectedModel">
+    {{protectedModel.data.name}}
+  </option>
 </select>
