@@ -27,6 +27,7 @@ import { SelectElementComponent }                 from './components/element-com
 import { ElementListSelectorComponent }           from './components/element-components/select-element/element-list-selector/element-list-selector.component';
 import { ElementTaxonomySelectorComponent }       from './components/element-components/select-element/element-taxonomy-selector/element-taxonomy-selector.component';
 import { EmptyElementComponent }                  from './components/element-components/select-element/empty-element/empty-element.component';
+import { MappingRuleMetaDataComponent } from './components/screen-components/create-mapping-rule/mapping-rule-meta-data/mapping-rule-meta-data.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { EmptyElementComponent }                  from './components/element-com
     SelectElementComponent,
     ElementListSelectorComponent,
     ElementTaxonomySelectorComponent,
-    EmptyElementComponent
+    EmptyElementComponent,
+    MappingRuleMetaDataComponent
   ],
   imports: [
     BrowserModule,

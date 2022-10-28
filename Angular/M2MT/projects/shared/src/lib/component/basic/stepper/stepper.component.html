@@ -1,4 +1,3 @@
-<p>stepper works!</p>
 <div class="container">
   <div class="line"></div>
   <div class="stepper">
@@ -11,8 +10,12 @@
 </div>
 <hr/>
 
-<ng-template stepHost></ng-template>
+<div class="step-body">
+  <ng-template stepHost></ng-template>
+</div>
 <hr/>
 
-<button class="secundary text-button" (click)="previous()" [disabled]="isLowest">Previous</button>
-<button class="primary button" (click)="next()" [disabled]="isHighest">Next</button>
+<div class="control">
+  <button class="secundary text-button" (click)="previous()" [disabled]="isLowest">Previous</button>
+  <button class="primary button" (click)="next()" [disabled]="isHighest">Next</button>
+</div>

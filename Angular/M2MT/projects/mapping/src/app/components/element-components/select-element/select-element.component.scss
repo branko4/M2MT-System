@@ -1,0 +1,17 @@
+@import '../../../../../../shared/src/lib/variables';
+
+.head {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  color: $dark;
+}
+
+.container {
+  display: flex;
+}
+
+app-empty-element {
+  display: inline-block;
+  width: 100%;
+}

@@ -1,0 +1,46 @@
+@import '../../../../../../../shared/src/lib/variables';
+
+
+$border-thickness: 2px;
+
+.line {
+  border: $border-thickness solid $red;
+  height: 20px;
+  width: 0;
+  margin: auto;
+}
+
+.hor-line {
+  border: $border-thickness solid $red;
+  height: 0;
+}
+
+.full {
+  width: calc(100% - (2 * $border-thickness));
+  margin-left: 0;
+}
+
+.left, .right {
+  width: calc(50% - $border-thickness);
+}
+
+.right, .off {
+  margin-left: calc(50% - $border-thickness);
+}
+
+.off {
+  width: 0;
+}
+
+.element {
+  background-color: $primary-accent;
+  border: solid $border-thickness $primary;
+  display: inline-block;
+  margin: 0 10px;
+  padding: $padding;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}

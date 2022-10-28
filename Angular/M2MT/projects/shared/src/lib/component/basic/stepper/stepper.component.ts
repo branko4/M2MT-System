@@ -1,9 +1,11 @@
-import { Component, Input, OnInit, Type, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, Type, ViewChild } from '@angular/core';
 import { StepComponent } from './step.component';
 import { StepDirective } from './step.directive';
 
-export interface Step {
-  name: string,
+export interface Step<T> {
+  component: Type<StepComponent<T>>, 
+  data: T,
+  name?: string,
 }
 
 @Component({
@@ -12,7 +14,8 @@ export interface Step {
   styleUrls: ['./stepper.component.scss']
 })
 export class StepperComponent implements OnInit {
-  @Input() steps: Type<StepComponent>[] = [];
+  @Input() steps: Step<any>[] = [];
+  @Output() stepsChange = new EventEmitter<Step<any>[]>();
 
   @ViewChild(StepDirective, {static: true}) stepHost!: StepDirective;
   private currentIndex = 0;
@@ -48,7 +51,13 @@ export class StepperComponent implements OnInit {
     viewContainerRef.clear();
 
     this.updateControl()
-    const componentRef = viewContainerRef.createComponent<StepComponent>(this.steps[workingIndex]);
+    const componentRef = viewContainerRef.createComponent<StepComponent<any>>(this.steps[workingIndex].component);
+    componentRef.instance.injectData(this.steps[workingIndex].data);
+    componentRef.instance.dataChange.subscribe((data: any) => {
+      this.steps[workingIndex].data = data;
+      this.next();
+      this.stepsChange.emit(this.steps)
+    })
   }
 
   setMax() {

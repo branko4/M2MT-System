@@ -3,6 +3,7 @@ $primary: var(--primary-color,  rgb(232,221,17));
 $primary-accent: var(--primary-accent-color, rgb(255,255,175));
 $secundary: var(--secundary-color, rgb(0,143,215));
 $secundary-accent: var(--secundary-accent-color, rgb(159,218,247));
+$red: var(--red-color, rgb(191,18,56));
 
 $dark-color: #2c2a3b;
 $dark-accent-color: #353444;
@@ -16,6 +17,7 @@ $theme-primary-negative-accent: var(--theme-primary-negative-accent, $dark-light
 
 $light-color: white;
 $light-accent-color: lightgray;
+$light-mid-accent-color: rgb(233,233,233);
 $light: var(--light-color, $light-color);
 $light-accent: var(--light-accent-color, $light-accent-color);
 $theme-secundary: var(--theme-secundary-color, $light);
@@ -30,7 +32,11 @@ $footer-height: 20px;
 
 // generic layout
 $border-radius: 15px;
-$padding: 7px 10px;
+$border-thickness: 1px;
+
+$padding-vertical: 7px;
+$padding-horizontal: 10px;
+$padding: $padding-vertical $padding-horizontal;
 
 // style
 $danger: var(--danger-color, red);
@@ -85,6 +91,18 @@ $danger: var(--danger-color, red);
   }
 }
 
+$spacing: 20px;
+
+.control{
+  padding: $spacing;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.control button {
+  margin-left: $spacing;
+}
+
 select {
   width: 100%;
 }
@@ -95,6 +113,7 @@ input, select, input:-internal-autofill-selected {
   padding: $padding;
   border: solid $primary 1px;
   color: $dark !important;
+  width:  calc(100% - (2 * $padding-horizontal));
 }
 
 option {
@@ -114,4 +133,18 @@ main {
 
 lib-table {
   display: block;
+}
+
+$scrollbar-size: 8px;
+
+* {
+  &::-webkit-scrollbar {
+    background-color: $primary-accent;
+    width: $scrollbar-size;
+    height: $scrollbar-size;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $primary;
+  }
 }

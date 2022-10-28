@@ -5,8 +5,6 @@ h2 {
   text-align: center;
 }
 
-$spacing: 20px;
-
 header {
   padding: $spacing;
   background-color: $theme-primary;
@@ -15,14 +13,4 @@ header {
 
 table {
   margin: $spacing;
-}
-
-.control{
-  padding: $spacing;
-  display: flex;
-  justify-content: flex-end;
-}
-
-button {
-  margin-left: $spacing;
 }
