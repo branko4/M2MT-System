@@ -1,31 +1,31 @@
-@import '../../../../../../../shared/src/lib/variables';
+@use '../../../../../../../shared/src/lib/styles/variables';
 
 
 $border-thickness: 2px;
 
 .line {
-  border: $border-thickness solid $red;
+  border: variables.$border-thickness solid variables.$red;
   height: 20px;
   width: 0;
   margin: auto;
 }
 
 .hor-line {
-  border: $border-thickness solid $red;
+  border: variables.$border-thickness solid variables.$red;
   height: 0;
 }
 
 .full {
-  width: calc(100% - (2 * $border-thickness));
+  width: calc(100% - (2 * variables.$border-thickness));
   margin-left: 0;
 }
 
 .left, .right {
-  width: calc(50% - $border-thickness);
+  width: calc(50% - variables.$border-thickness);
 }
 
 .right, .off {
-  margin-left: calc(50% - $border-thickness);
+  margin-left: calc(50% - variables.$border-thickness);
 }
 
 .off {
@@ -33,11 +33,11 @@ $border-thickness: 2px;
 }
 
 .element {
-  background-color: $primary-accent;
-  border: solid $border-thickness $primary;
+  background-color: variables.$primary-accent;
+  border: solid variables.$border-thickness variables.$primary;
   display: inline-block;
   margin: 0 10px;
-  padding: $padding;
+  padding: variables.$padding;
 }
 
 .container {

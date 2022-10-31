@@ -1,0 +1,148 @@
+@use './variables';
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: variables.$theme-primary-accent;
+  color: variables.$theme-secundary;
+}
+
+@mixin darkTheme {
+  #{variables.$theme-primary-name}: #{variables.$dark};
+  #{variables.$theme-primary-accent-name}: #{variables.$dark-accent};
+  #{variables.$theme-primary-negative-accent-name}: #{variables.$dark-light-accent};
+
+  #{variables.$theme-secundary-color-name}: #{variables.$light};
+  #{variables.$theme-secundary-accent-color-name}: #{variables.$light-accent};
+}
+
+@mixin lightTheme {
+  #{variables.$theme-primary-name}: #{variables.$light};
+  #{variables.$theme-primary-accent-name}: #{variables.$light-accent};
+  #{variables.$theme-primary-negative-accent-name}: #{variables.$light-mid-accent};
+
+  #{variables.$theme-secundary-color-name}: #{variables.$dark};
+  #{variables.$theme-secundary-accent-color-name}: #{variables.$dark-accent};
+}
+
+@media (prefers-color-scheme: dark) {
+  html, body {
+    @include darkTheme();
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  html, body {
+    @include lightTheme();
+  }
+}
+
+.dark-mode {
+  @include darkTheme();
+}
+
+.light-mode {
+  @include lightTheme();
+}
+
+.button, .text-button {  
+  cursor: pointer;
+  font-size: 1em;
+  text-decoration: none;
+  background-color: transparent;
+  border: none;
+
+  &.primary {
+    color: variables.$primary;
+  }
+
+  &.secundary {
+    color: variables.$secundary;
+  }
+
+  &.danger {
+    color: variables.$danger;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.button {
+  border-radius: 10px;
+  border: variables.$primary solid 2px;
+  font-weight: bold;
+  padding: variables.$padding;
+  color: variables.$dark;
+
+  &.primary {
+    background-color: variables.$primary;
+    color: variables.$dark;
+  }
+
+  &.secundary {
+    background-color: variables.$secundary;
+    border-color: variables.$secundary;
+    color: variables.$dark;
+  }
+
+  &.danger {
+    background-color: variables.$danger;
+    border-color: variables.$danger;
+    color: variables.$light;
+  }
+}
+
+.control{
+  padding: variables.$spacing;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.control button {
+  margin-left: variables.$spacing;
+}
+
+// chrome overwrites the input style, when autofilled, therefore the :-internal-autofill-selected was tried to overwrite chrome, but it did not work ಠ_ಠ
+input, select, input:-internal-autofill-selected {
+  background-color: variables.$primary-accent !important;
+  padding: variables.$padding;
+  border: solid variables.$primary 1px;
+  color: variables.$dark !important;
+  width:  calc(100% - (2 * variables.$padding-horizontal));
+}
+
+option {
+  background-color: variables.$primary-accent;
+  font-size: 1.2em;
+}
+
+// defaults
+$main-width: 1000px;
+$main-margin: 25px;
+
+main {
+  width: $main-width;
+  min-height: calc(100vh - (variables.$nav-height + variables.$footer-height + 2 * $main-margin));
+  margin: $main-margin auto;
+}
+
+lib-table {
+  display: block;
+}
+
+$scrollbar-size: 8px;
+
+* {
+  &::-webkit-scrollbar {
+    background-color: variables.$primary-accent;
+    width: $scrollbar-size;
+    height: $scrollbar-size;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: variables.$primary;
+  }
+}

@@ -1,10 +1,10 @@
-@import '../../../../../../shared/src/lib/variables';
+@use '../../../../../../shared/src/lib/styles/variables';
 
 .head {
   display: flex;
   justify-content: center;
   margin: 0;
-  color: $dark;
+  color: variables.$dark;
 }
 
 .container {

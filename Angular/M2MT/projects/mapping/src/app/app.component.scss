@@ -1,7 +1,7 @@
-@import '../../../shared/src/lib/variables';
+@use '../../../shared/src/lib/styles/variables';
 
 app-footer {
-  height: $footer-height;
+  height: variables.$footer-height;
   width: 100vw;
-  background-color: $theme-primary;
+  background-color: variables.$theme-primary;
 }

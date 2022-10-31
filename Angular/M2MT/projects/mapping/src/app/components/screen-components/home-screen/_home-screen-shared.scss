@@ -1,5 +1,5 @@
-@import '../../../../../../shared/src/lib/variables';
+@use '../../../../../../shared/src/lib/styles/variables';
 
-$home-nav-real-height: $nav-real-height;
+$home-nav-real-height: variables.$nav-real-height;
 
 $home-nav-height: ($home-nav-real-height);

@@ -1,5 +1,5 @@
-@import '../../../../../../shared/src/lib/variables';
+@use '../../../../../../shared/src/lib/styles/variables';
 
 span {
-  color: $theme-secundary;
+  color: variables.$theme-secundary;
 }

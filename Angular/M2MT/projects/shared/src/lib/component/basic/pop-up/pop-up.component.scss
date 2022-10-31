@@ -1,4 +1,4 @@
-@import '../../../variables';
+@use '../../../styles/variables';
 
 .background, .container {
   margin: 0;
@@ -23,7 +23,7 @@
 
 .pop-up {
   pointer-events: all;
-  background-color: $theme-primary-accent;
-  border-radius: $border-radius;
+  background-color: variables.$theme-primary-accent;
+  border-radius: variables.$border-radius;
   margin: 10vw;
 }

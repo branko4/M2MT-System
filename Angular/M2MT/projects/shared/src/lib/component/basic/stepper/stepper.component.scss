@@ -1,4 +1,4 @@
-@import '../../../variables';
+@use '../../../styles/variables';
 
 
 $z-index-line: 9;
@@ -17,29 +17,29 @@ $z-index-line: 9;
 }
 
 .line {
-  border: $border-thickness solid $theme-primary;
+  border: variables.$border-thickness solid variables.$theme-primary;
   height: 0;
   position: relative;
-  top: ($border-radius + $border-thickness);
+  top: (variables.$border-radius + variables.$border-thickness);
   left: 0;
   right: 0;
   z-index: $z-index-line;
 }
 
 .step {
-  border-radius: $border-radius;
-  border: $border-thickness solid $theme-primary;
-  width: (2 * $border-radius);
-  height: (2 * $border-radius);
-  background-color: $theme-secundary;
+  border-radius: variables.$border-radius;
+  border: variables.$border-thickness solid variables.$theme-primary;
+  width: (2 * variables.$border-radius);
+  height: (2 * variables.$border-radius);
+  background-color: variables.$theme-secundary;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: $theme-primary;
+  color: variables.$theme-primary;
 
   &.active {
-    background-color: $theme-secundary-accent;
+    background-color: variables.$theme-secundary-accent;
   }
 }
 
@@ -55,11 +55,11 @@ $hr-margin: 8px;
 $hr-border-thickness: 1px;
 // since button has a relative highed (em) there should be a bit of extra space
 // therefore:
-$button-height: 20px + 2 * $padding-vertical;
+$button-height: 20px + 2 * variables.$padding-vertical;
 
 .step-body {
   width: 100%;
-  height: calc(100% - (2 * $border-radius + 2 * $border-thickness + 4 *  $hr-margin + 4 * $hr-border-thickness + $button-height + 2 * $spacing));
-  padding-bottom: $padding-vertical;
+  height: calc(100% - (2 * variables.$border-radius + 2 * variables.$border-thickness + 4 *  $hr-margin + 4 * $hr-border-thickness + $button-height + 2 * variables.$spacing));
+  padding-bottom: variables.$padding-vertical;
   overflow: auto;
 }

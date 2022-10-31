@@ -1,10 +1,10 @@
-@import '../../../variables';
+@use '../../../styles/variables';
 
 $padding: 5px;
 
 table {
   width: 100%;
-  border: solid 1px $theme-primary;
+  border: solid 1px variables.$theme-primary;
 }
 
 th, td {
@@ -16,16 +16,16 @@ th, td {
 }
 
 thead tr {
-  background-color: $theme-primary;
-  color: $theme-secundary;
+  background-color: variables.$theme-primary;
+  color: variables.$theme-secundary;
 }
 
 // tbody:nth-child(odd)
 tbody tr
 {
   &:nth-child(odd) {
-    background-color: $theme-primary-accent;
-    color: $theme-secundary;
+    background-color: variables.$theme-primary-accent;
+    color: variables.$theme-secundary;
 
     // & .column {
     //   border-left-color: $theme-primary;
@@ -33,8 +33,8 @@ tbody tr
   }
 
   &:nth-child(even) {
-    background-color: $theme-primary-negative-accent;
-    color: $theme-secundary;
+    background-color: variables.$theme-primary-negative-accent;
+    color: variables.$theme-secundary;
 
     // & .column {
     //   border-left-color: $theme-primary-accent;
@@ -43,9 +43,9 @@ tbody tr
 }
 
 .column {
-  border-left-color: $theme-primary-accent;
+  border-left-color: variables.$theme-primary-accent;
   padding: $padding;
-  border-left: 2px solid $theme-primary;
+  border-left: 2px solid variables.$theme-primary;
   text-align: left;
 }
 

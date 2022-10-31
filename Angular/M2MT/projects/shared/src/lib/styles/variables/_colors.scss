@@ -1,0 +1,47 @@
+// General colors:
+$primary: var(--primary-color,  rgb(232,221,17));
+$primary-accent: var(--primary-accent-color, rgb(255,255,175));
+$secundary: var(--secundary-color, rgb(0,143,215));
+$secundary-accent: var(--secundary-accent-color, rgb(159,218,247));
+$red: var(--red-color, rgb(191,18,56));
+$danger: var(--danger-color, red);
+
+// Theme colors, i.e. light or dark colors:
+$dark-color: #2c2a3b;
+$dark-accent-color: #353444;
+$dark-light-accent-color: #312f40;
+$light-color: white;
+$light-accent-color: lightgray;
+$light-mid-accent-color: rgb(233,233,233);
+
+//   Theme colors vars:
+//     names:
+$dark-name: --dark-color;
+$dark-accent-name: --dark-accent-color;
+$dark-light-accent-name: --dark-light-accent-color;
+$light-color-name: --light-color;
+$light-accent-color-name: --light-accent-color;
+$light-mid-accent-color-name: --light-mid-accent-color;
+
+//     variables
+$dark: var($dark-name, $dark-color);
+$dark-accent: var($dark-accent-name, $dark-accent-color);
+$dark-light-accent: var($dark-light-accent-name, $dark-light-accent-color);
+$light: var($light-color-name, $light-color);
+$light-accent: var($light-accent-color-name, $light-accent-color);
+$light-mid-accent: var($light-mid-accent-color-name, $light-mid-accent-color);
+
+//  vars for theme:
+//    names:
+$theme-primary-name: --theme-primary;
+$theme-primary-accent-name: --theme-primary-accent;
+$theme-primary-negative-accent-name: --theme-primary-negative-accent;
+$theme-secundary-color-name: --theme-secundary-color;
+$theme-secundary-accent-color-name: --theme-secundary-accent-color;
+
+//    variables:
+$theme-primary: var($theme-primary-name, $dark);
+$theme-primary-accent: var($theme-primary-accent-name, $dark-accent);
+$theme-primary-negative-accent: var($theme-primary-negative-accent-name, $dark-light-accent);
+$theme-secundary: var($theme-secundary-color-name, $light);
+$theme-secundary-accent: var($theme-secundary-accent-color-name, $light-accent);

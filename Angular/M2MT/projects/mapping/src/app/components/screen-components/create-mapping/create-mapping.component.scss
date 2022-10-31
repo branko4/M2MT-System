@@ -1,4 +1,4 @@
-@import '../../../../../../shared/src/lib/variables';
+@use '../../../../../../shared/src/lib/styles/variables';
 
 h2 { 
   margin: 0;
@@ -6,11 +6,11 @@ h2 {
 }
 
 header {
-  padding: $spacing;
-  background-color: $theme-primary;
-  border-radius: $border-radius $border-radius 0 0;
+  padding: variables.$spacing;
+  background-color: variables.$theme-primary;
+  border-radius: variables.$border-radius variables.$border-radius 0 0;
 }
 
 table {
-  margin: $spacing;
+  margin: variables.$spacing;
 }
