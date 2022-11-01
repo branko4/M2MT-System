@@ -28,6 +28,8 @@ import { ElementListSelectorComponent }           from './components/element-com
 import { ElementTaxonomySelectorComponent }       from './components/element-components/select-element/element-taxonomy-selector/element-taxonomy-selector.component';
 import { EmptyElementComponent }                  from './components/element-components/select-element/empty-element/empty-element.component';
 import { MappingRuleMetaDataComponent } from './components/screen-components/create-mapping-rule/mapping-rule-meta-data/mapping-rule-meta-data.component';
+import { DeleteMappingComponent } from './components/screen-components/delete-mapping/delete-mapping.component';
+import { DeleteMappingRuleComponent } from './components/screen-components/delete-mapping-rule/delete-mapping-rule.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +56,9 @@ import { MappingRuleMetaDataComponent } from './components/screen-components/cre
     ElementListSelectorComponent,
     ElementTaxonomySelectorComponent,
     EmptyElementComponent,
-    MappingRuleMetaDataComponent
+    MappingRuleMetaDataComponent,
+    DeleteMappingComponent,
+    DeleteMappingRuleComponent
   ],
   imports: [
     BrowserModule,

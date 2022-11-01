@@ -9,3 +9,4 @@ export * from './lib/component/basic/pop-up/pop-up.component';
 export * from './lib/component/basic/stepper/stepper.component';
 export * from './lib/component/basic/stepper/step.directive';
 export * from './lib/component/basic/stepper/step.component';
+export * from './lib/component/basic/conformation-pop-up/conformation-pop-up.component';

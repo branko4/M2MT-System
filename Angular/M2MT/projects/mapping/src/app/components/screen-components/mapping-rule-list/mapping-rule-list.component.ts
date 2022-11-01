@@ -23,13 +23,10 @@ export class MappingRuleListComponent {
   constructor(private router: Router, private route: ActivatedRoute) { }
 
   delete(index: number, that: MappingRuleListComponent) {
-    console.log(that);
-    console.log(`The following row is called to be deleted: ${that.data.rows[index]}`);
+    that.router.navigate([that.data.rows[index][0],"delete"], {relativeTo: that.route});
   }
 
   rowSelected(index: number, that: MappingRuleListComponent) {
-    console.log(that);
-    console.log(`The following row is called to be deleted: ${that.data.rows[index][0]}`);
     that.router.navigate([that.data.rows[index][0]], {relativeTo: that.route});
   }
 }
