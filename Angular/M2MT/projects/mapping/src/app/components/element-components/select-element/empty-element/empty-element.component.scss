@@ -1,15 +1,5 @@
 @use '../../../../../../../shared/src/lib/styles/variables';
 
-
-$border-thickness: 2px;
-
-.line {
-  border: variables.$border-thickness solid variables.$red;
-  height: 20px;
-  width: 0;
-  margin: auto;
-}
-
 .hor-line {
   border: variables.$border-thickness solid variables.$red;
   height: 0;
@@ -30,14 +20,6 @@ $border-thickness: 2px;
 
 .off {
   width: 0;
-}
-
-.element {
-  background-color: variables.$primary-accent;
-  border: solid variables.$border-thickness variables.$primary;
-  display: inline-block;
-  margin: 0 10px;
-  padding: variables.$padding;
 }
 
 .container {

@@ -1,5 +1,7 @@
 @use './variables';
 
+@forward './visuals';
+
 html, body {
   margin: 0;
   padding: 0;
@@ -119,14 +121,10 @@ option {
   font-size: 1.2em;
 }
 
-// defaults
-$main-width: 1000px;
-$main-margin: 25px;
-
 main {
-  width: $main-width;
-  min-height: calc(100vh - (variables.$nav-height + variables.$footer-height + 2 * $main-margin));
-  margin: $main-margin auto;
+  width: variables.$main-width;
+  min-height: calc(100vh - variables.$header-footer-height);
+  margin: variables.$main-margin auto;
 }
 
 lib-table {

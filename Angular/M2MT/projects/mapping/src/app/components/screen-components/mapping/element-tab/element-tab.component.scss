@@ -1,0 +1,49 @@
+@use '../../../../../../../shared/src/lib/styles/variables';
+
+$tab-edge-size: 25px;
+$tab-location-start-part: '#{variables.$assets-path}/tab';
+$tab-start-location: '#{$tab-location-start-part}-start.svg';
+$tab-end-location: '#{$tab-location-start-part}-end.svg';
+
+.tab {
+  position: relative;
+  z-index: 0;
+  display: inline-block;
+  margin-right: -($tab-edge-size - 5px);
+
+  & div {
+    width: $tab-edge-size;
+    height: $tab-edge-size;
+    -webkit-mask-size: cover;
+    mask-size: cover;
+
+    &:first-child{
+      -webkit-mask-image: url($tab-start-location);
+      mask-image: url($tab-start-location);
+    }
+
+    &:last-child {
+      -webkit-mask-image: url($tab-end-location);
+      mask-image: url($tab-end-location);
+    }
+  }
+
+  & * {
+    background-color: red;
+    display: inline-block;
+  }
+
+  & span {
+    overflow: hidden;
+    height: 100%;
+    height: $tab-edge-size;
+  }
+
+  &:hover {
+    z-index: 10;
+
+    & * {
+      background-color: grey;
+    }
+  }
+}

@@ -1,0 +1,22 @@
+@use '../../../../../../../shared/src/lib/styles/variables';
+
+$arrow-location: '#{variables.$assets-path}/arrow.svg';
+$arrow-width: 20px;
+$arrow-height: 15px;
+
+.container {
+  display: flex;
+  justify-content: center;
+  color: variables.$theme-primary;
+}
+
+.arrow {
+  width: $arrow-width;
+  height: $arrow-height;
+  -webkit-mask-image: url($arrow-location);
+  mask-image: url($arrow-location);
+  -webkit-mask-size: cover;
+  mask-size: cover;
+  background-color: variables.$red;
+  margin: 0 auto;
+}

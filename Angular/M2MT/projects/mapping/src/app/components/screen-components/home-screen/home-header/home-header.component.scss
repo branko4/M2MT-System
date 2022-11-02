@@ -91,6 +91,7 @@ header {
   // 200px could also have been 150px or 250px, does not reflect anything
   min-width: 200px;
   padding: variables.$padding;
+  z-index: 20;
 }
 
 table, select {
