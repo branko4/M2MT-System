@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Element } from 'projects/mapping/src/app/models/element.model';
+import { TaxonomyElement } from 'projects/shared/src/lib/Data/dto/elements.dto';
 
 @Component({
   selector: 'app-element',
@@ -7,5 +7,5 @@ import { Element } from 'projects/mapping/src/app/models/element.model';
   styleUrls: ['./element.component.scss']
 })
 export class ElementComponent {
-  @Input() element?: Element;
+  @Input() element?: TaxonomyElement;
 }

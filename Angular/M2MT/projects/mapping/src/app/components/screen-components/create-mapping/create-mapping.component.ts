@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CreateMappingDTO } from '../../../dto/create-mapping.dto';
+import { CreateMapping } from '../../../../../../shared/src/lib/Data/dto/mappings.dto';
 
 @Component({
   selector: 'app-create-mapping',
@@ -8,7 +8,7 @@ import { CreateMappingDTO } from '../../../dto/create-mapping.dto';
   styleUrls: ['./create-mapping.component.scss']
 })
 export class CreateMappingComponent {
-  mapping: CreateMappingDTO = {};
+  mapping: CreateMapping = {};
   creatable = this.stateIsInvalid();
 
   constructor(private router: Router, private route: ActivatedRoute) { }

@@ -1,7 +1,8 @@
+import { Mapping } from "../models/mapping.model";
 import { Model } from "../models/model.model";
-import { Protected } from "../models/protected.model";
+import { Protected } from "../models/_protected.model";
 
-export interface CreateMappingDTO {
+export interface CreateMapping {
   id?: string,
   name?: string,
   modelFrom?: Protected<Model>,

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { BasicElement, Element } from 'projects/mapping/src/app/models/element.model';
+import { BasicElement } from 'projects/shared/src/lib/Data/models/element.model';
+import { TaxonomyElement } from 'projects/shared/src/lib/Data/dto/elements.dto';
 
 @Component({
   selector: 'app-model-side',
@@ -14,7 +15,7 @@ export class ModelSideComponent implements OnInit {
     ], 
   };
   activeElement?: BasicElement;
-  loadableElement?: Element;
+  loadableElement?: TaxonomyElement;
 
   constructor() { }
 

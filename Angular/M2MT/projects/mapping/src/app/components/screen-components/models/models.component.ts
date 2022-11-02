@@ -1,6 +1,6 @@
 import { Component, Output, Input, EventEmitter } from '@angular/core';
-import { Model } from '../../../models/model.model';
-import { Protected } from '../../../models/protected.model';
+import { Model } from '../../../../../../shared/src/lib/Data/models/model.model';
+import { Protected } from '../../../../../../shared/src/lib/Data/models/_protected.model';
 
 @Component({
   selector: 'app-models',

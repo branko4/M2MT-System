@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { BasicElement } from 'projects/mapping/src/app/models/element.model';
+import { BasicElement } from 'projects/shared/src/lib/Data/models/element.model';
 
 @Component({
   selector: 'app-element-tab',
