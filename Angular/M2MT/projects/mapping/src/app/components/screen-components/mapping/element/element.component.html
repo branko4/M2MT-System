@@ -1,10 +1,19 @@
-<app-element [element]="element.parent" *ngIf="element && element.parent"></app-element>
-<div>
+<div  *ngIf="element && element.parent">
+  <app-element [element]="element.parent" *ngIf="element && element.parent" [modelSide]="modelSide"></app-element>
   <div class="arrow"></div>
   <div class="line"></div>
 </div>
 <div class="container">
   <div class="element">
-    <span *ngIf="element" >{{element.name}}</span>
+    <header>
+      <span *ngIf="element" >{{element.name}}</span>
+    </header>
+    <div class="attributes">
+      <div *ngIf="elementWithValues">
+        <div class="attribute" *ngFor="let attribute of elementWithValues.attributes" (click)="onSelected(attribute)">
+          <span>{{attribute.name}}</span>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

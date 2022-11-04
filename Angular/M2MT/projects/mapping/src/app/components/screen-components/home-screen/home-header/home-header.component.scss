@@ -1,5 +1,6 @@
 @use '../home-screen-shared' as homeScreen;
 @use '../../../../../../../shared/src/lib/styles/variables';
+@use '../../../../../../../shared/src/lib/styles/functions';
 
 // logo is 80x21, those to make it fit at maximum it is multiplied
 // margin-top -bottom auto will vertically center the element
@@ -27,21 +28,11 @@
   font-size: 2.5em;
 }
 
-@mixin centerItems {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 header {
   width: 100vw;
   height: homeScreen.$home-nav-real-height;
   background-color: variables.$theme-primary;
-  @include centerItems();
-}
-
-.centered-items {
-  @include centerItems();
+  @include functions.centerItems();
 }
 
 .top-header {

@@ -1,4 +1,3 @@
-@use 'sass:math';
 @use './variables';
 
 .line {
@@ -13,7 +12,14 @@
   border: solid variables.$border-thickness variables.$primary;
   display: inline-block;
   margin: 0;
-  // 100px is just random, however it should be bellow the value returned by the divide, i.e. divide - a >= 0
-  width: (math.div(variables.$main-width, 2) - 100px);
   padding: variables.$padding;
+}
+
+.highlight .attribute {
+  border-color: variables.$secundary;
+  cursor: pointer;
+}
+
+.highlight .attribute:hover {
+  border-color: variables.$secundary-accent;
 }

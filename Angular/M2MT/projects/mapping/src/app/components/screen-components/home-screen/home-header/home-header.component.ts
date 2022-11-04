@@ -35,7 +35,6 @@ export class HomeHeaderComponent implements OnInit {
   }
 
   updateThem(newTheme: Themes) {
-    console.log(newTheme);
     if (this.theme !== Themes.DEFAULT) document.body.classList.remove(this.theme);
     this.theme = newTheme;
     document.body.classList.add(this.theme);

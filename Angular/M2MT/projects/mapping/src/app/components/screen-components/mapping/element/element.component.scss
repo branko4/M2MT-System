@@ -1,13 +1,15 @@
+@use 'sass:math';
 @use '../../../../../../../shared/src/lib/styles/variables';
 
 $arrow-location: '#{variables.$assets-path}/arrow.svg';
 $arrow-width: 20px;
 $arrow-height: 15px;
 
+$padding: 5px;
+
 .container {
   display: flex;
   justify-content: center;
-  color: variables.$theme-primary;
 }
 
 .arrow {
@@ -19,4 +21,23 @@ $arrow-height: 15px;
   mask-size: cover;
   background-color: variables.$red;
   margin: 0 auto;
+}
+
+.attribute {
+  padding: $padding;
+  pointer-events: all;
+  border: solid $padding transparent;
+}
+
+.element {
+  // 200px is just random, however it should be bellow the value returned by the divide, i.e. divide - a >= 0
+  width: (math.div(variables.$main-width, 2) - 200px);
+  padding: 0;
+  border-color: variables.$theme-primary;
+  background-color: variables.$theme-primary-accent;
+}
+
+header {
+  background-color: variables.$theme-primary;
+  padding: $padding;
 }

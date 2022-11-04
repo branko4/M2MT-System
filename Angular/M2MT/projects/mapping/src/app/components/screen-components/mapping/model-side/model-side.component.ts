@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { BasicElement } from 'projects/shared/src/lib/Data/models/element.model';
 import { TaxonomyElement } from 'projects/shared/src/lib/Data/dto/elements.dto';
+import { LeftModelSide, ModelSide } from '../element/element.component';
 
 @Component({
   selector: 'app-model-side',
@@ -8,19 +9,20 @@ import { TaxonomyElement } from 'projects/shared/src/lib/Data/dto/elements.dto';
   styleUrls: ['./model-side.component.scss']
 })
 export class ModelSideComponent implements OnInit {
-  @Input() modelSide: { elements: BasicElement[]} = { 
+  @Input() model: { elements: BasicElement[]} = { 
     elements: [
       { name: "Bufferstop", id: "randomID123", },
       { name: "VehicleStop", id: "randomID124", },
     ], 
   };
+  @Input() modelSide: ModelSide = new LeftModelSide();
   activeElement?: BasicElement;
   loadableElement?: TaxonomyElement;
 
   constructor() { }
 
   ngOnInit(): void {
-    this.activeElement = this.modelSide.elements[0];
+    this.activeElement = this.model.elements[0];
     this.loadElement();
   }
 
@@ -36,8 +38,13 @@ export class ModelSideComponent implements OnInit {
           name: "TrackAsset",
           id: "randomId032",
           parent: {
-            name: "Base",
+            name: "EULYNX::Base",
             id: "randomId20",
+            parent: {
+              name: "RSM::Base",
+              id: "randomId20",
+              childs: [],
+            },
             childs: [],
           },
           childs: [],

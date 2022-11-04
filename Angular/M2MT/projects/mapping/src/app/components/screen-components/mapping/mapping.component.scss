@@ -1,24 +1,23 @@
 @use '../../../../../../shared/src/lib/styles/variables';
 
-$border-size: 2px;
+$border-size: 1px;
 
 app-model-side {
-  width: calc(50% - (2 * $border-size));
+  width: calc(50%);
   padding: 0;
   margin: 0;
   display: inline-block;
-  border: solid red $border-size;
   position: relative;
   z-index: 1;
+  pointer-events: none;
 }
 
 app-svg {
   position: absolute;
   top: 0;
   left: 0;
-  border: solid blue $border-size;
   z-index: 0;
-  width: calc(100% - (2 * $border-size));
+  width: calc(100%);
   min-height: 90%;
 }
 
@@ -27,13 +26,16 @@ $mapping-actions-height: 80px;
 main {
   overflow: auto;
   position: relative;
-  height: calc(100vh - (variables.$header-footer-height + $mapping-actions-height + (2 * $border-size)));
+  height: calc(100vh - (variables.$header-footer-height + $mapping-actions-height + 2* $border-size));
   min-height: 0;
+  background-color: variables.$theme-primary-negative-accent;
+  border: solid 2px variables.$theme-primary
 }
 
 app-mapping-actions {
-  width: calc(100% - (2 * $border-size));
-  height: ($mapping-actions-height - (2 * $border-size));
-  border: solid green $border-size;
+  width: calc(100%);
+  height: $mapping-actions-height;
+  border-bottom-color: solid variables.$theme-secundary $border-size;
   display: block;
+  background-color: variables.$theme-primary;
 }

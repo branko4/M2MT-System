@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output, Type, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, Type, ViewChild } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { StepComponent } from './step.component';
 import { StepDirective } from './step.directive';
 
@@ -13,9 +14,10 @@ export interface Step<T> {
   templateUrl: './stepper.component.html',
   styleUrls: ['./stepper.component.scss']
 })
-export class StepperComponent implements OnInit {
+export class StepperComponent implements OnInit, OnDestroy {
   @Input() steps: Step<any>[] = [];
   @Output() stepsChange = new EventEmitter<Step<any>[]>();
+  private subscription?: Subscription;
 
   @ViewChild(StepDirective, {static: true}) stepHost!: StepDirective;
   private currentIndex = 0;
@@ -53,11 +55,16 @@ export class StepperComponent implements OnInit {
     this.updateControl()
     const componentRef = viewContainerRef.createComponent<StepComponent<any>>(this.steps[workingIndex].component);
     componentRef.instance.injectData(this.steps[workingIndex].data);
-    componentRef.instance.dataChange.subscribe((data: any) => {
+    this.subscription = componentRef.instance.dataChange.subscribe((data: any) => {
       this.steps[workingIndex].data = data;
       this.next();
       this.stepsChange.emit(this.steps)
     })
+  }
+
+  
+  ngOnDestroy(): void {
+    this.subscription?.unsubscribe();
   }
 
   setMax() {

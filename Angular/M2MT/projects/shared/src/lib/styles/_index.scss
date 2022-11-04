@@ -1,4 +1,6 @@
+@use 'sass:math';
 @use './variables';
+@use './functions';
 
 @forward './visuals';
 
@@ -97,13 +99,17 @@ html, body {
   }
 }
 
+.centered-items {
+  @include functions.centerItems();
+}
+
 .control{
   padding: variables.$spacing;
   display: flex;
   justify-content: flex-end;
 }
 
-.control button {
+.control .button, .control .text-button {
   margin-left: variables.$spacing;
 }
 
@@ -135,12 +141,13 @@ $scrollbar-size: 8px;
 
 * {
   &::-webkit-scrollbar {
-    background-color: variables.$primary-accent;
     width: $scrollbar-size;
     height: $scrollbar-size;
+    border-radius: math.div($scrollbar-size, 2);
   }
 
   &::-webkit-scrollbar-thumb {
     background: variables.$primary;
+    border-radius: math.div($scrollbar-size, 2);
   }
 }

@@ -7,5 +7,5 @@ import { BasicElement } from 'projects/shared/src/lib/Data/models/element.model'
   styleUrls: ['./element-tab.component.scss']
 })
 export class ElementTabComponent {
-  @Input() elements: BasicElement[] = []
+  @Input() elements: BasicElement[] = [];
 }

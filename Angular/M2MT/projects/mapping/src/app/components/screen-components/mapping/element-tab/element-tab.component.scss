@@ -1,19 +1,21 @@
 @use '../../../../../../../shared/src/lib/styles/variables';
 
-$tab-edge-size: 25px;
 $tab-location-start-part: '#{variables.$assets-path}/tab';
 $tab-start-location: '#{$tab-location-start-part}-start.svg';
 $tab-end-location: '#{$tab-location-start-part}-end.svg';
+
+$z-index-hover: 10;
+$z-index-active: $z-index-hover + 1;
 
 .tab {
   position: relative;
   z-index: 0;
   display: inline-block;
-  margin-right: -($tab-edge-size - 5px);
+  margin-right: -(variables.$tab-edge-size - 5px);
 
   & div {
-    width: $tab-edge-size;
-    height: $tab-edge-size;
+    width: variables.$tab-edge-size;
+    height: variables.$tab-edge-size;
     -webkit-mask-size: cover;
     mask-size: cover;
 
@@ -29,21 +31,30 @@ $tab-end-location: '#{$tab-location-start-part}-end.svg';
   }
 
   & * {
-    background-color: red;
     display: inline-block;
+    background-color: variables.$secundary;
   }
-
+  
   & span {
     overflow: hidden;
-    height: 100%;
-    height: $tab-edge-size;
+    height: variables.$tab-edge-size;
+  }
+  
+  &:hover {
+    z-index: $z-index-hover;
+    cursor: pointer;
+    
+    & * {
+      background-color: variables.$secundary-accent;
+    }
   }
 
-  &:hover {
-    z-index: 10;
-
-    & * {
-      background-color: grey;
+  &.active {
+    z-index: $z-index-active;
+    cursor: default;
+    
+    * {
+      background-color: variables.$theme-primary-negative-accent;
     }
   }
 }
