@@ -25,6 +25,7 @@ namespace M2MT.Mapping
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
+            app.UseRouting();
 
 
             app.MapControllers();

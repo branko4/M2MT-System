@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using M2MT.Shared.Model.InformationModel;
 
 namespace M2MT.Mapping.Controllers
 {
@@ -7,5 +7,10 @@ namespace M2MT.Mapping.Controllers
     [ApiController]
     public class InformationModelController : ControllerBase
     {
+        [HttpGet]
+        public List<Model> GetAll()
+        {
+            return new List<Model>();
+        }
     }
 }
