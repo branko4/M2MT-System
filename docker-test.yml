@@ -3,12 +3,25 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.backend
+    depends_on:
+      - database
     networks:
       - back-tier
+      - data-tier
   # proxy:
   #   build:
   #     context: .
   #     dockerfile: Dockerfile.proxy
+  database:
+    image: postgres:14.0
+    networks:
+      - data-tier
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: example
+    volumes:
+      - M2MT-test-database:/var/lib/postgresql/data
   backend-tester:
     build:
       context: .
@@ -23,3 +36,8 @@ services:
 networks:
   front-tier: {}
   back-tier: {}
+  data-tier: {}
+
+volumes:
+  M2MT-test-database:
+    external: true
