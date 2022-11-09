@@ -1,6 +1,6 @@
 {
   "ConnectionStrings": {
-    "PostgresConnectionString": "Host=database;"
+    "PostgresConnectionString": "Host=database;Username=mapping_system;Database=postgres"
   },
   "Logging": {
     "LogLevel": {

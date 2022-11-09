@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using M2MT.Shared.Model.InformationModel;
+using M2MT.Shared.IService.InformationModel;
 
 namespace M2MT.Mapping.Controllers
 {
@@ -7,10 +8,18 @@ namespace M2MT.Mapping.Controllers
     [ApiController]
     public class InformationModelController : ControllerBase
     {
-        [HttpGet]
-        public List<Model> GetAll()
+        private IInformationModelReadService service;
+
+        public InformationModelController(IInformationModelReadService service)
         {
-            return new List<Model>();
+            this.service = service;
+        }
+
+        [HttpGet]
+        public async Task<IEnumerable<Model>> GetAll()
+        {
+            var models = await service.GetAll();
+            return models;
         }
     }
 }

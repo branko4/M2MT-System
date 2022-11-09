@@ -5,6 +5,11 @@ services:
       dockerfile: Dockerfile.backend
     depends_on:
       - database
+    environment:
+      PGUSER: mapping_system
+      PGHOST: database
+    ports:
+      - "8080:80"
     networks:
       - back-tier
       - data-tier
