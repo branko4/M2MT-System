@@ -17,7 +17,7 @@ namespace M2MT.Shared.Service.Model
 
         public async Task<IEnumerable<InformationModel>> GetAll()
         {
-            return await this.modelRepository.GetModel();
+            return await this.modelRepository.GetModels();
         }
     }
 }

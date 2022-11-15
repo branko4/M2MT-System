@@ -17,7 +17,7 @@ namespace M2MT.Shared.Repository.Model
             this.dbConnection = dbConnection;
         }
 
-        public async Task<IEnumerable<InformationModel>> GetModel()
+        public async Task<IEnumerable<InformationModel>> GetModels()
         {
             dbConnection.Open();
             var a = await dbConnection.QueryAsync<InformationModel>("SELECT * FROM model.\"Models\"");

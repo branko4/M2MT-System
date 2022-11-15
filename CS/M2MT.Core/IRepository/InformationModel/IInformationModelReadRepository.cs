@@ -7,6 +7,6 @@ namespace M2MT.Shared.IRepository.InformationModel
 {
     public interface IInformationModelReadRepository
     {
-        public Task<IEnumerable<IModel>> GetModel();
+        public Task<IEnumerable<IModel>> GetModels();
     }
 }
