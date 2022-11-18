@@ -1,36 +1,35 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Dapper;
-using M2MT.Shared.IRepository.InformationModel;
+﻿using M2MT.Shared.IRepository.InformationModel;
 using M2MT.Shared.IService.InformationModel;
-using M2MT.Shared.Model.InformationModel;
 using M2MT.Shared.Service.Model;
+using M2MT.Test.Shared.Util.GenericTest;
+using M2MT.Test.Shared.Util;
+using M2MT.Shared.Model.InformationModel;
 
 namespace M2MT.Test.Shared.Service.InformationModel
 {
-    public class InformationModelReadServiceTest
+    public class InformationModelReadServiceTest : GenericReadServiceTest<InformationModelReadService, Model, IInformationModelReadRepository>
     {
+
         [Fact]
         public void Constructor_RepositoryIsFake_IsInstanceOfIInformationModelReadService()
         {
-            // Arrange
-            var repository = A.Fake<IInformationModelReadRepository>();
-            A.CallTo(() => repository.GetModels()).Returns(new List<Model>());
-
-            var service = new InformationModelReadService(repository);
-
-            // Act
-            var actual = (service is IInformationModelReadService);
-
-            // Assert
-            Assert.True(actual);
+            BuildAUutInstance(WITH_NO_CONFIGURATION).IsInstanceOf<IInformationModelReadService>();
         }
 
-        //public void GetModel_ModelsIsEmpty_ReturnsEmptyList()
+        protected override UUTBuilder<InformationModelReadService> BuildAUutInstance(MethodConfiguration<IInformationModelReadRepository>[] conf)
+        {
+            return TestA
+                .ObjectWithType<InformationModelReadService>()
+                .AddBuildedParameterAs(A.Fake<IInformationModelReadRepository>())
+                .WithMethodConfiguration(conf);
+        }
+
+        protected override MethodConfiguration<IInformationModelReadRepository> BuildConfForUutDepenedencyGetAll()
+        {
+            return new MethodConfiguration<IInformationModelReadRepository>((repoFake) =>
+            {
+                return A.CallTo(() => repoFake.GetModels()).Returns(new List<Model>());
+            });
+        }
     }
 }

@@ -7,7 +7,6 @@
 
   <ItemGroup>
     <Folder Include="Model\InformationModel\" />
-    <Folder Include="Model\Mapping\" />
   </ItemGroup>
 
 </Project>

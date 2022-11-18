@@ -24,7 +24,6 @@
 
   <ItemGroup>
     <Folder Include="Shared\Repository\InformationModel\" />
-    <Folder Include="Shared\Service\Mapping\" />
     <Folder Include="Shared\Repository\Mapping\" />
   </ItemGroup>
 
