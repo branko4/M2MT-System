@@ -17,7 +17,7 @@ namespace M2MT.Shared.Service.Mapping
 
         public async Task<IEnumerable<MappingModel>> GetAll()
         {
-            return await _repository.GetMappings();
+            return await _repository.GetAll();
         }
     }
 }

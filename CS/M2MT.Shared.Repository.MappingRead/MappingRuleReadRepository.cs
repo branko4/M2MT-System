@@ -7,7 +7,7 @@ namespace M2MT.Shared.Repository.Mapping
 {
     public class MappingRuleReadRepository : IMappingRuleReadRepository
     {
-        public Task<IEnumerable<MappingRule>> GetMappingRules()
+        public Task<IEnumerable<MappingRule>> GetAll()
         {
             throw new System.NotImplementedException();
         }

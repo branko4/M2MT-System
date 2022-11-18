@@ -17,7 +17,7 @@ namespace M2MT.Shared.Service.Mapping
 
         public Task<IEnumerable<MappingRule>> GetAll()
         {
-            return this._repository.GetMappingRules();
+            return this._repository.GetAll();
         }
     }
 }

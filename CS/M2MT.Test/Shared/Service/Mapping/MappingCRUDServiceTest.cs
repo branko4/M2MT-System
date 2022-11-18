@@ -60,7 +60,7 @@ namespace M2MT.Test.Shared.Service.Mapping
         {
             return new MethodConfiguration<IMappingCRUDRepository>((repoFake) =>
             {
-                return A.CallTo(() => repoFake.GetMappings()).Returns(new List<MappingModel>());
+                return A.CallTo(() => repoFake.GetAll()).Returns(new List<MappingModel>());
             });
         }
 

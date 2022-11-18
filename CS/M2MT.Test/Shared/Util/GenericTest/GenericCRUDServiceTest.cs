@@ -1,4 +1,6 @@
 ﻿
+using M2MT.Shared.IService;
+
 namespace M2MT.Test.Shared.Util.GenericTest
 {
     public abstract class GenericCRUDServiceTest<UUTType, UUTModelType, UUTDependency> : GenericReadServiceTest<UUTType, UUTModelType, UUTDependency>
@@ -35,6 +37,12 @@ namespace M2MT.Test.Shared.Util.GenericTest
                 .SoThatFunction("Remove")
                 .WithParams(RemoveParams())
                 .ReturnsAsync(RemoveOutput());
+        }
+
+        [Fact]
+        public void Constructor_EveryThingIsDefault_IsInstanceOfICRUDService()
+        {
+            BuildAUutInstance(WITH_NO_CONFIGURATION).IsInstanceOf<ICRUDService<UUTModelType>>();
         }
     }
 }

@@ -5,8 +5,7 @@ using IModel = M2MT.Shared.Model.InformationModel.Model;
 
 namespace M2MT.Shared.IService.InformationModel
 {
-    public interface IInformationModelReadService
+    public interface IInformationModelReadService : IReadService<IModel>
     {
-        public Task<IEnumerable<IModel>> GetAll();
     }
 }

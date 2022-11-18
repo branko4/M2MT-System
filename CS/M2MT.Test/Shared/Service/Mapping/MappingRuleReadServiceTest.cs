@@ -28,7 +28,7 @@ namespace M2MT.Test.Shared.Service.Mapping
         {
             return new MethodConfiguration<IMappingRuleReadRepository>((repoFake) =>
             {
-                return A.CallTo(() => repoFake.GetMappingRules()).Returns(new List<MappingRule>());
+                return A.CallTo(() => repoFake.GetAll()).Returns(new List<MappingRule>());
             });
         }
     }
