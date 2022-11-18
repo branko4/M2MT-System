@@ -52,6 +52,7 @@ namespace M2MT.Test.Shared.Util
         {
             Type uutType = typeof(UUT);
             MethodInfo uutMethod = uutType.GetMethod(_functionName);
+            if (uutMethod == null) throw new Exception($"Function with name {_functionName} is not found, please check if it exists");
             Task<EXPECTED_TYPE> asyncedReturn = (Task<EXPECTED_TYPE>)uutMethod.Invoke(this._uut, _params);
             EXPECTED_TYPE actual = await asyncedReturn;
 
