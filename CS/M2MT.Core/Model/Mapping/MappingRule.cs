@@ -3,15 +3,7 @@ using System;
 
 namespace M2MT.Shared.Model.Mapping
 {
-    public class MappingRule
+    public class MappingRule : Base
     {
-        public Guid ID { get; set; }
-
-        public override bool Equals(object obj)
-        {
-            MappingRule other = obj as MappingRule;
-            if (other == null) return false;
-            return this.ID.Equals(other.ID);
-        }
     }
 }
