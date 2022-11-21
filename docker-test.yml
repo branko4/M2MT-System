@@ -7,6 +7,7 @@ services:
       - database
     environment:
       PGUSER: mapping_system
+      PGPASSWORD: hello
       PGHOST: database
     ports:
       - "8080:80"
