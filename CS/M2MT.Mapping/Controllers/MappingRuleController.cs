@@ -1,4 +1,6 @@
 ﻿using M2MT.Shared.IService.Mapping;
+using M2MT.Shared.Model;
+using M2MT.Shared.Model.InformationModel;
 using M2MT.Shared.Model.Mapping;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -32,6 +34,13 @@ namespace M2MT.Mapping.Controllers
         public Task<MappingRule> Delete([FromBody] MappingRule mapping)
         {
             return service.Remove(mapping);
+        }
+
+        [HttpPost]
+        [Route("element")]
+        public Task<MappingRule> AddElement(MappingRuleAddElementDTO dto)
+        {
+            return service.AddElement(dto.MappingRule, dto.Element);
         }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using M2MT.Shared.IRepository.Mapping;
 using M2MT.Shared.IService.Mapping;
+using M2MT.Shared.Model;
+using M2MT.Shared.Model.InformationModel;
 using M2MT.Shared.Model.Mapping;
 using System.Threading.Tasks;
 
@@ -11,6 +13,12 @@ namespace M2MT.Shared.Service.Mapping
         public MappingRuleCRUDService(IMappingRuleCRUDRepository repository) : base(repository)
         {
             _repository = repository;
+        }
+
+        public async Task<MappingRule> AddElement(RefTo<MappingRule> mappingRule, RefTo<Element> element)
+        {
+            await _repository.AddElement(mappingRule, element);
+            return await _repository.GetOne(mappingRule);
         }
 
         public async Task<MappingRule> Create(MappingRule mappingrule)
