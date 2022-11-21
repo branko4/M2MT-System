@@ -1,0 +1,13 @@
+@use '../../../../../../shared/src/lib/styles/variables';
+@use '../../../../../../shared/src/lib/styles/functions';
+
+footer {
+  background-color: variables.$theme-primary;
+  width: 100%;
+  height: 100%;
+  @include functions.centerItems();
+}
+
+span {
+  color: variables.$theme-secundary;
+}

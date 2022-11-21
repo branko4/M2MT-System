@@ -1,0 +1,25 @@
+@use './variables';
+
+.line {
+  border: variables.$border-thickness solid variables.$red;
+  height: variables.$line-height;
+  width: 0;
+  margin: auto;
+}
+
+.element {
+  background-color: variables.$primary-accent;
+  border: solid variables.$border-thickness variables.$primary;
+  display: inline-block;
+  margin: 0;
+  padding: variables.$padding;
+}
+
+.highlight .attribute {
+  border-color: variables.$secundary;
+  cursor: pointer;
+}
+
+.highlight .attribute:hover {
+  border-color: variables.$secundary-accent;
+}

@@ -1,0 +1,29 @@
+@use '../../../styles/variables';
+
+.background, .container {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.background {
+  background-color: rgba(147, 147, 147, 0.9);
+}
+
+.container {
+  pointer-events: none;
+}
+
+.pop-up {
+  pointer-events: all;
+  background-color: variables.$theme-primary-accent;
+  border-radius: variables.$border-radius;
+  margin: 10vw;
+}

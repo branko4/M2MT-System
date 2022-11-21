@@ -1,5 +1,7 @@
 import { NgModule }                               from '@angular/core';
 import { BrowserModule }                          from '@angular/platform-browser';
+import { FormsModule }                            from '@angular/forms';
+import { SharedModule }                           from 'projects/shared/src/public-api';
 
 import { AppRoutingModule }                       from './app-routing.module';
 import { AppComponent }                           from './app.component';
@@ -25,6 +27,9 @@ import { SelectElementComponent }                 from './components/element-com
 import { ElementListSelectorComponent }           from './components/element-components/select-element/element-list-selector/element-list-selector.component';
 import { ElementTaxonomySelectorComponent }       from './components/element-components/select-element/element-taxonomy-selector/element-taxonomy-selector.component';
 import { EmptyElementComponent }                  from './components/element-components/select-element/empty-element/empty-element.component';
+import { MappingRuleMetaDataComponent } from './components/screen-components/create-mapping-rule/mapping-rule-meta-data/mapping-rule-meta-data.component';
+import { DeleteMappingComponent } from './components/screen-components/delete-mapping/delete-mapping.component';
+import { DeleteMappingRuleComponent } from './components/screen-components/delete-mapping-rule/delete-mapping-rule.component';
 
 @NgModule({
   declarations: [
@@ -50,11 +55,16 @@ import { EmptyElementComponent }                  from './components/element-com
     SelectElementComponent,
     ElementListSelectorComponent,
     ElementTaxonomySelectorComponent,
-    EmptyElementComponent
+    EmptyElementComponent,
+    MappingRuleMetaDataComponent,
+    DeleteMappingComponent,
+    DeleteMappingRuleComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

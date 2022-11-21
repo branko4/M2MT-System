@@ -1,1 +1,6 @@
-<p>empty-element-component works!</p>
+<div [class]="classes" *ngIf="isRootElement === false"></div>
+<div class="line" *ngIf="isRootElement  === false"></div>
+<div class="container">
+  <span class="element" (click)="selected()"> {{element.name}} </span>
+</div>
+<div class="line" *ngIf="isLast === false"></div>

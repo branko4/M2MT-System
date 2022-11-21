@@ -1,0 +1,60 @@
+@use '../../../../../../../shared/src/lib/styles/variables';
+
+$tab-location-start-part: '#{variables.$assets-path}/tab';
+$tab-start-location: '#{$tab-location-start-part}-start.svg';
+$tab-end-location: '#{$tab-location-start-part}-end.svg';
+
+$z-index-hover: 10;
+$z-index-active: $z-index-hover + 1;
+
+.tab {
+  position: relative;
+  z-index: 0;
+  display: inline-block;
+  margin-right: -(variables.$tab-edge-size - 5px);
+
+  & div {
+    width: variables.$tab-edge-size;
+    height: variables.$tab-edge-size;
+    -webkit-mask-size: cover;
+    mask-size: cover;
+
+    &:first-child{
+      -webkit-mask-image: url($tab-start-location);
+      mask-image: url($tab-start-location);
+    }
+
+    &:last-child {
+      -webkit-mask-image: url($tab-end-location);
+      mask-image: url($tab-end-location);
+    }
+  }
+
+  & * {
+    display: inline-block;
+    background-color: variables.$secundary;
+  }
+  
+  & span {
+    overflow: hidden;
+    height: variables.$tab-edge-size;
+  }
+  
+  &:hover {
+    z-index: $z-index-hover;
+    cursor: pointer;
+    
+    & * {
+      background-color: variables.$secundary-accent;
+    }
+  }
+
+  &.active {
+    z-index: $z-index-active;
+    cursor: default;
+    
+    * {
+      background-color: variables.$theme-primary-negative-accent;
+    }
+  }
+}

@@ -1,0 +1,5 @@
+@use '../../../../../../shared/src/lib/styles/variables';
+
+$home-nav-real-height: variables.$nav-real-height;
+
+$home-nav-height: ($home-nav-real-height);

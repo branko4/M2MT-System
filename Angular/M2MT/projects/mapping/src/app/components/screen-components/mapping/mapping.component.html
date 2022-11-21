@@ -1,1 +1,8 @@
-<p>mapping-component works!</p>
+<app-home-header></app-home-header>
+<main>
+  <app-model-side [modelSide]="LEFT_MODEL_SIDE" [class.highlight]="highLightLeft" ></app-model-side>
+  <app-model-side [modelSide]="RIGHT_MODEL_SIDE" [class.highlight]="highLightRight"></app-model-side>
+  <app-svg [class.highlight]="highLightArrows"></app-svg>
+</main>
+<app-mapping-actions></app-mapping-actions>
+<router-outlet></router-outlet>

@@ -1,0 +1,16 @@
+@use '../../../styles/variables';
+
+h2 { 
+  margin: 0;
+  text-align: center;
+}
+
+header {
+  padding: variables.$spacing;
+  background-color: variables.$theme-primary;
+  border-radius: variables.$border-radius variables.$border-radius 0 0;
+}
+
+table {
+  margin: variables.$spacing;
+}

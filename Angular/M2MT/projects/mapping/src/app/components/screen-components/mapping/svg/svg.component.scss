@@ -1,0 +1,14 @@
+path{
+  stroke: red;
+  fill: transparent;
+  stroke-width: 4px;
+
+
+  &.highlight {
+    stroke: blue;
+  }
+}
+
+svg {
+  overflow: visible;
+}

@@ -1,1 +1,20 @@
-<p>mapping-actions-component works!</p>
+<div class="centered-items">
+  <div class="centered-items">
+    <button class="secundary text-button" routerLink=".."> &lt; back</button>
+  </div>
+  <div class="centered-items">
+    <button class="danger button" (click)="onDelete()">
+      Remove relation
+    </button>
+  </div>
+  <div class="centered-items">
+    <button class="primary button" (click)="onCreate()">
+      Add relation
+    </button>
+  </div>
+  <div class="centered-items">
+    <button class="secundary text-button" *ngIf="cancelable" (click)="onCancel()">
+      cancel
+    </button>
+  </div>
+</div>

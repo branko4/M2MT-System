@@ -1,0 +1,21 @@
+<lib-pop-up (backgroundClick)="cancel()">
+  <header>
+    <h2>{{conformationInformation.title}}</h2>
+  </header>
+  <table *ngIf="conformationInformation.isDelete">
+    <tr>
+      <td>
+        <label for="conformation-input">
+          Retype the following {{conformationInformation.value}}
+        </label>
+      </td>
+      <td>
+        <input type="text" [(ngModel)]="inputValue" (ngModelChange)="onFormDataChanged()" name="conformation-input">
+      </td>
+    </tr>
+  </table>
+  <div class="control">
+    <button class="text-button secundary" (click)="cancel()">Cancel</button>
+    <button class="button danger" (click)="executeAction()" [disabled]="notExecutable">{{conformationInformation.actionMessage}}</button>
+  </div>
+</lib-pop-up>

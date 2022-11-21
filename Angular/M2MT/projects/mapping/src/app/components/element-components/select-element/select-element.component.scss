@@ -1,0 +1,17 @@
+@use '../../../../../../shared/src/lib/styles/variables';
+
+.head {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  color: variables.$dark;
+}
+
+.container {
+  display: flex;
+}
+
+app-empty-element {
+  display: inline-block;
+  width: 100%;
+}

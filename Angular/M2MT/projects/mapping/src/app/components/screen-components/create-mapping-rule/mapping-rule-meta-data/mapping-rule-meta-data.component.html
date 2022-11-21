@@ -1,0 +1,19 @@
+<table>
+  <tr>
+    <td colspan="2">
+      <h3>
+        General information of mapping rule
+      </h3>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <label for="name">
+        Name of mapping rule
+      </label>
+    </td>
+    <td>
+      <input type="text" name="name" [(ngModel)]="data.output.selectedMappingRuleName" (ngModelChange)="onFormDataChanged()">
+    </td>
+  </tr>
+</table>
