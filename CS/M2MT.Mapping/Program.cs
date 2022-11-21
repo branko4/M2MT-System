@@ -4,6 +4,10 @@ using Npgsql;
 using System.Data;
 using M2MT.Shared.IRepository.InformationModel;
 using M2MT.Shared.Repository.Model;
+using M2MT.Shared.IService.Mapping;
+using M2MT.Shared.Service.Mapping;
+using M2MT.Shared.IRepository.Mapping;
+using M2MT.Shared.Repository.Mapping;
 
 namespace M2MT.Mapping
 {
@@ -21,9 +25,23 @@ namespace M2MT.Mapping
             builder.Services.AddSwaggerGen();
 
             string connectionString = builder.Configuration.GetConnectionString("PostgresConnectionString");
-
+            
+            // Services
             builder.Services.AddTransient<IInformationModelReadService, InformationModelReadService>();
+            builder.Services.AddTransient<IElementReadService, ElementReadService>();
+            builder.Services.AddTransient<IAttributeReadService, AttributeReadService>();
+            builder.Services.AddTransient<IMappingCRUDService, MappingCRUDService>();
+            builder.Services.AddTransient<IMappingRelationCRUDService, MappingRelationCRUDService>();
+            builder.Services.AddTransient<IMappingRuleCRUDService, MappingRuleCRUDService>();
+
+            // Repositories
             builder.Services.AddTransient<IInformationModelReadRepository, InformationModelReadRepository>();
+            builder.Services.AddTransient<IElementReadRepository, ElementReadRepository>();
+            builder.Services.AddTransient<IAttributeReadRepository, AttributeReadRepository>();
+            builder.Services.AddTransient<IMappingCRUDRepository, MappingCRUDRepository>();
+            builder.Services.AddTransient<IMappingRelationCRUDRepository, MappingRelationCRUDRepository>();
+            builder.Services.AddTransient<IMappingRuleCRUDRepository, MappingRuleCRUDRepository>();
+            
 
             builder.Services.AddScoped<IDbConnection, NpgsqlConnection>((IServiceProvider sp) =>
             {

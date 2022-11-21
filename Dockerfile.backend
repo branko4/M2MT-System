@@ -2,14 +2,16 @@
 ## == build == ##
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build-env
 
-WORKDIR /app/M2MT.Mapping
+WORKDIR /app
 
-COPY CS/M2MT.Mapping/*.csproj ./
+COPY CS/ ./
+
 RUN dotnet restore
+
+WORKDIR /app/M2MT.Mapping
 
 WORKDIR /app
 
-COPY CS ./
 RUN dotnet publish -c Release -o out
 
 ## == Build runtime image == ##

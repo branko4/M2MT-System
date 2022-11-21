@@ -5,6 +5,8 @@ using InformationModel = M2MT.Shared.Model.InformationModel.Model;
 using System.Data;
 using Dapper;
 using System.Threading.Tasks;
+using M2MT.Shared.Entity.Util;
+using M2MT.Shared.Entity.InformationModel;
 
 namespace M2MT.Shared.Repository.Model
 {
@@ -20,9 +22,9 @@ namespace M2MT.Shared.Repository.Model
         public async Task<IEnumerable<InformationModel>> GetModels()
         {
             dbConnection.Open();
-            var a = await dbConnection.QueryAsync<InformationModel>("SELECT * FROM model.\"Models\"");
+            var models = await dbConnection.QueryAsync<ModelEntity>("SELECT * FROM model.\"Models\"");
             dbConnection.Close();
-            return a != null ? a : new List<InformationModel>();
+            return Converter.ConvertList<InformationModel, ModelEntity>(models);
         }
     }
 }

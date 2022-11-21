@@ -5,7 +5,7 @@ using M2MT.Shared.Model.InformationModel;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace M2MT.Shared.Service.ModelRead
+namespace M2MT.Shared.Service.Model
 {
     public class ElementReadService : IElementReadService
     {

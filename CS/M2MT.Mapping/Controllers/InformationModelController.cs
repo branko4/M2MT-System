@@ -16,10 +16,9 @@ namespace M2MT.Mapping.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<Model>> GetAll()
+        public Task<IEnumerable<Model>> GetAll()
         {
-            var models = await service.GetAll();
-            return models;
+            return service.GetAll();
         }
     }
 }

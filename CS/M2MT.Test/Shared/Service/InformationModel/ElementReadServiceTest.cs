@@ -1,7 +1,7 @@
 ﻿using M2MT.Shared.IRepository.InformationModel;
 using M2MT.Shared.IService.InformationModel;
 using M2MT.Shared.Model.InformationModel;
-using M2MT.Shared.Service.ModelRead;
+using M2MT.Shared.Service.Model;
 using M2MT.Test.Shared.Util;
 using M2MT.Test.Shared.Util.GenericTest;
 using System;
