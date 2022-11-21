@@ -1,0 +1,11 @@
+{
+  "ConnectionStrings": {
+    "PostgresConnectionString": "Host=database;Username=mapping_system;Password=hello;Database=postgres"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  }
+}

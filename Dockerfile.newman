@@ -1,0 +1,27 @@
+## == CLI/ BASE == ##
+FROM node:19 AS base
+
+WORKDIR /app
+
+RUN npm install -g newman && \
+    npm install newman && \
+    npm install postman-collection --save
+
+## == BUILD == ##
+FROM base AS build
+
+ARG TARGET=mapping-backend
+
+ENV TARGET_HOST=$TARGET
+
+COPY Testing/API ./
+RUN npm install
+
+RUN node mapping/build.js
+
+## == FINAL== ##
+FROM base AS final
+
+COPY --from=build /app/mapping/collection.json .
+
+ENTRYPOINT newman run ./collection.json -r cli

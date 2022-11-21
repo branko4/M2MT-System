@@ -1,7 +1,9 @@
 ﻿
+using M2MT.Shared.Model.Mapping;
+
 namespace M2MT.Shared.IService.Mapping
 {
-    public interface IMappingRuleCRUDService : IMappingRuleReadService
+    public interface IMappingRuleCRUDService : ICRUDService<MappingRule>, IMappingRuleReadService
     {
     }
 }

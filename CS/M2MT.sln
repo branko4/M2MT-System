@@ -9,32 +9,32 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Manager", "Manager", "{3F9E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{C44ECB8A-7914-4489-A403-836ED5EA8A2A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "M2MT.Shared", "M2MT.Core\M2MT.Shared.csproj", "{B383A315-80F6-4A4B-947B-532A47C450FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "M2MT.Shared", "M2MT.Core\M2MT.Shared.csproj", "{B383A315-80F6-4A4B-947B-532A47C450FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "M2MT.Shared.Service.MappingCRUD", "M2MT.Shared.Service.MappingCRUD\M2MT.Shared.Service.MappingCRUD.csproj", "{351E2C89-FA3E-4BE4-896D-E9FB5CC6EEB6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "M2MT.Shared.Service.MappingCRUD", "M2MT.Shared.Service.MappingCRUD\M2MT.Shared.Service.MappingCRUD.csproj", "{351E2C89-FA3E-4BE4-896D-E9FB5CC6EEB6}"
 	ProjectSection(ProjectDependencies) = postProject
 		{ABAA6FD8-4A09-4764-89A7-BE6AB228E0F4} = {ABAA6FD8-4A09-4764-89A7-BE6AB228E0F4}
 		{B383A315-80F6-4A4B-947B-532A47C450FB} = {B383A315-80F6-4A4B-947B-532A47C450FB}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "M2MT.Shared.Service.MappingRead", "M2MT.Shared.Service.MappingRead\M2MT.Shared.Service.MappingRead.csproj", "{ABAA6FD8-4A09-4764-89A7-BE6AB228E0F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "M2MT.Shared.Service.MappingRead", "M2MT.Shared.Service.MappingRead\M2MT.Shared.Service.MappingRead.csproj", "{ABAA6FD8-4A09-4764-89A7-BE6AB228E0F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "M2MT.Shared.Service.ModelRead", "M2MT.Shared.Service.ModelRead\M2MT.Shared.Service.ModelRead.csproj", "{7DB0816C-F159-4F38-A613-6FE58CF94EA2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "M2MT.Shared.Service.ModelRead", "M2MT.Shared.Service.ModelRead\M2MT.Shared.Service.ModelRead.csproj", "{7DB0816C-F159-4F38-A613-6FE58CF94EA2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "M2MT.Shared.Service.ModelCRUD", "M2MT.Shared.Service.ModelCRUD\M2MT.Shared.Service.ModelCRUD.csproj", "{504CAAA7-604A-4BF6-A9F1-56DE39C29AA0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "M2MT.Shared.Service.ModelCRUD", "M2MT.Shared.Service.ModelCRUD\M2MT.Shared.Service.ModelCRUD.csproj", "{504CAAA7-604A-4BF6-A9F1-56DE39C29AA0}"
 	ProjectSection(ProjectDependencies) = postProject
 		{7DB0816C-F159-4F38-A613-6FE58CF94EA2} = {7DB0816C-F159-4F38-A613-6FE58CF94EA2}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "M2MT.Mapping", "M2MT.Mapping\M2MT.Mapping.csproj", "{6ED09523-D680-48FE-A413-FF6A7F93DE17}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "M2MT.Mapping", "M2MT.Mapping\M2MT.Mapping.csproj", "{6ED09523-D680-48FE-A413-FF6A7F93DE17}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "M2MT.Shared.Repository.MappingCRUD", "M2MT.Share.Repository.MappingCRUD\M2MT.Shared.Repository.MappingCRUD.csproj", "{C38EC5EE-C689-421A-91C0-3B8923DA346F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "M2MT.Shared.Repository.MappingCRUD", "M2MT.Share.Repository.MappingCRUD\M2MT.Shared.Repository.MappingCRUD.csproj", "{C38EC5EE-C689-421A-91C0-3B8923DA346F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "M2MT.Shared.Repository.MappingRead", "M2MT.Shared.Repository.MappingRead\M2MT.Shared.Repository.MappingRead.csproj", "{C38810D7-A3FC-4556-8E21-08A2C935A9C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "M2MT.Shared.Repository.MappingRead", "M2MT.Shared.Repository.MappingRead\M2MT.Shared.Repository.MappingRead.csproj", "{C38810D7-A3FC-4556-8E21-08A2C935A9C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "M2MT.Shared.Repository.ModelRead", "M2MT.Shared.Repository.ModelRead\M2MT.Shared.Repository.ModelRead.csproj", "{23B7C5BA-8487-4D4F-8DD6-8A29ACA7FB3E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "M2MT.Shared.Repository.ModelRead", "M2MT.Shared.Repository.ModelRead\M2MT.Shared.Repository.ModelRead.csproj", "{23B7C5BA-8487-4D4F-8DD6-8A29ACA7FB3E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "M2MT.Shared.Repository.ModelCRUD", "M2MT.Shared.Repository.ModelCRUD\M2MT.Shared.Repository.ModelCRUD.csproj", "{1DA6C973-4A58-4F9B-A368-504AE7A82F12}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "M2MT.Shared.Repository.ModelCRUD", "M2MT.Shared.Repository.ModelCRUD\M2MT.Shared.Repository.ModelCRUD.csproj", "{1DA6C973-4A58-4F9B-A368-504AE7A82F12}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{45C3C28C-9A48-4AE9-8D5E-F73C1C660579}"
 EndProject
@@ -51,6 +51,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{8882BA4B-C4CA-44BF-BEB2-417034530CE9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{3699816B-D8DA-4A59-94E1-D91C2AE732B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "M2MT.Test", "M2MT.Test\M2MT.Test.csproj", "{889AE396-49BF-42A6-96DE-DFAD5FD59C27}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -98,6 +100,10 @@ Global
 		{1DA6C973-4A58-4F9B-A368-504AE7A82F12}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1DA6C973-4A58-4F9B-A368-504AE7A82F12}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1DA6C973-4A58-4F9B-A368-504AE7A82F12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{889AE396-49BF-42A6-96DE-DFAD5FD59C27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{889AE396-49BF-42A6-96DE-DFAD5FD59C27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{889AE396-49BF-42A6-96DE-DFAD5FD59C27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{889AE396-49BF-42A6-96DE-DFAD5FD59C27}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -122,6 +128,7 @@ Global
 		{BCD7F782-68EA-406C-A2DE-3540D8A667EB} = {C44ECB8A-7914-4489-A403-836ED5EA8A2A}
 		{731911B6-218D-47E6-92C3-F3C94DABCCAA} = {BCD7F782-68EA-406C-A2DE-3540D8A667EB}
 		{00A542C4-E76A-4F81-9064-FA6A3C2F1E30} = {BCD7F782-68EA-406C-A2DE-3540D8A667EB}
+		{889AE396-49BF-42A6-96DE-DFAD5FD59C27} = {3699816B-D8DA-4A59-94E1-D91C2AE732B8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {048381B7-0624-4F2A-8F23-BF50FBE7A9F4}

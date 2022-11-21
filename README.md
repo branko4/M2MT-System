@@ -140,7 +140,13 @@ One better solution would be to replace the function by an observer like solutio
 
 
 # Setup backend
-tk
+
+## !**Important**!
+- Since the backend uses npgsql, don't forget to add/ change the connections string in the `test-env.json` and `appsettings.Development.json`. Which includes:
+  - password
+  - location
+  - username
+  - database, since database, if not defined, is equal to username
 
 # Angular Tutorial ***For now discontinued***
 tk

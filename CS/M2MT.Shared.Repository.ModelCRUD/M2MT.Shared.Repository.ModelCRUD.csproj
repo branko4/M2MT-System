@@ -6,6 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.123" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\M2MT.Core\M2MT.Shared.csproj" />
     <ProjectReference Include="..\M2MT.Shared.Repository.ModelRead\M2MT.Shared.Repository.ModelRead.csproj" />
   </ItemGroup>

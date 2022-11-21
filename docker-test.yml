@@ -1,0 +1,49 @@
+services:
+  mapping-backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    depends_on:
+      - database
+    environment:
+      PGUSER: mapping_system
+      PGPASSWORD: hello
+      PGHOST: database
+    ports:
+      - "8080:80"
+    networks:
+      - back-tier
+      - data-tier
+  # proxy:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.proxy
+  database:
+    image: postgres:14.0
+    networks:
+      - data-tier
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: example
+    volumes:
+      - M2MT-test-database:/var/lib/postgresql/data
+  backend-tester:
+    build:
+      context: .
+      dockerfile: Dockerfile.newman
+      args:
+        TARGET: mapping-backend
+    depends_on:
+      - mapping-backend
+    networks:
+      - back-tier
+
+networks:
+  front-tier: {}
+  back-tier: {}
+  data-tier: {}
+
+volumes:
+  M2MT-test-database:
+    external: true
