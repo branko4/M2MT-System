@@ -1,0 +1,32 @@
+@use '../../../../../../../shared/src/lib/styles/variables';
+
+.hor-line {
+  border: variables.$border-thickness solid variables.$red;
+  height: 0;
+}
+
+.full {
+  width: calc(100% - (2 * variables.$border-thickness));
+  margin-left: 0;
+}
+
+.left, .right {
+  width: calc(50% - variables.$border-thickness);
+}
+
+.right, .off {
+  margin-left: calc(50% - variables.$border-thickness);
+}
+
+.off {
+  width: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.element {
+  margin: 0 10px;
+}

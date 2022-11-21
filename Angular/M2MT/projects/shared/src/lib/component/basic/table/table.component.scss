@@ -1,0 +1,54 @@
+@use '../../../styles/variables';
+
+$padding: 5px;
+
+table {
+  width: 100%;
+  border: solid 1px variables.$theme-primary;
+}
+
+th, td {
+  padding: $padding;
+  
+  &:first-child {
+    border-left: none;
+  }
+}
+
+thead tr {
+  background-color: variables.$theme-primary;
+  color: variables.$theme-secundary;
+}
+
+// tbody:nth-child(odd)
+tbody tr
+{
+  &:nth-child(odd) {
+    background-color: variables.$theme-primary-accent;
+    color: variables.$theme-secundary;
+
+    // & .column {
+    //   border-left-color: $theme-primary;
+    // }
+  }
+
+  &:nth-child(even) {
+    background-color: variables.$theme-primary-negative-accent;
+    color: variables.$theme-secundary;
+
+    // & .column {
+    //   border-left-color: $theme-primary-accent;
+    // }
+  }
+}
+
+.column {
+  border-left-color: variables.$theme-primary-accent;
+  padding: $padding;
+  border-left: 2px solid variables.$theme-primary;
+  text-align: left;
+}
+
+td:first-child .column, th:first-child .column {
+  border-left: none;
+}

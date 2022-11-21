@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g xmlns="http://www.w3.org/2000/svg" id="relations-svg">
+    <path 
+    xmlns="http://www.w3.org/2000/svg" 
+    *ngFor="let relation of viewRelations" 
+    [attr.d]="formatPath(relation)" 
+    [class.highlight]="highlight"
+    id="{{relation.relation.id}}"
+    (click)="clicked(relation)"
+    />
+  </g>
+</svg>

@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="line"></div>
+  <div class="stepper">
+    <div class="step" *ngFor="let step of steps; index as i" (click)="stepClicked(i)">
+      <span>
+        {{i + 1}}
+      </span>
+    </div>
+  </div>
+</div>
+<hr/>
+
+<div class="step-body">
+  <ng-template stepHost></ng-template>
+</div>
+<hr/>
+
+<div class="control">
+  <button class="secundary text-button" (click)="previous()" [disabled]="isLowest">Previous</button>
+  <button class="primary button" (click)="next()" [disabled]="isHighest">Next</button>
+</div>

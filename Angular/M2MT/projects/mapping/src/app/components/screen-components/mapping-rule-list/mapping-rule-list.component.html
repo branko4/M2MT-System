@@ -1,1 +1,9 @@
-<p>mapping-rule-list-component works!</p>
+<app-home-header></app-home-header>
+<main>
+  <lib-table [data]="data"></lib-table>
+  <div class="control">
+    <button class="text-button secundary" routerLink=".."> &lt; back</button>
+    <button class="button primary" routerLink="create">Add mapping rule</button>
+  </div>
+  <router-outlet></router-outlet>
+</main>

@@ -1,1 +1,38 @@
-<p>home-header-component works!</p>
+<header >
+  <div class="centered-items top-header">
+    <a id="logo-pr" href="https://www.prorail.nl/" target="_blank"></a>
+    <span class="hands">🤝</span>
+    <a id="logo-eulynx" href="https://www.eulynx.eu/" target="_blank"></a>
+  </div>
+  <div class="menu-entry">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 70 70" (click)="toggleMenu()">
+      <g xmlns="http://www.w3.org/2000/svg" id="test">
+        <path xmlns="http://www.w3.org/2000/svg" stroke="black" d="M 10,10 h10 v10 h-10 v-10 h1" fill="black"/>
+        <path xmlns="http://www.w3.org/2000/svg" stroke="black" d="M 10,30 h10 v10 h-10 v-10 h1" fill="black"/>
+        <path xmlns="http://www.w3.org/2000/svg" stroke="black" d="M 10,50 h10 v10 h-10 v-10 h1" fill="black"/>
+        <path xmlns="http://www.w3.org/2000/svg" stroke="black" d="M 30,10 h10 v10 h-10 v-10 h1" fill="black"/>
+        <path xmlns="http://www.w3.org/2000/svg" stroke="black" d="M 30,30 h10 v10 h-10 v-10 h1" fill="black"/>
+        <path xmlns="http://www.w3.org/2000/svg" stroke="black" d="M 30,50 h10 v10 h-10 v-10 h1" fill="black"/>
+        <path xmlns="http://www.w3.org/2000/svg" stroke="black" d="M 50,10 h10 v10 h-10 v-10 h1" fill="black"/>
+        <path xmlns="http://www.w3.org/2000/svg" stroke="black" d="M 50,30 h10 v10 h-10 v-10 h1" fill="black"/>
+        <path xmlns="http://www.w3.org/2000/svg" stroke="black" d="M 50,50 h10 v10 h-10 v-10 h1" fill="black"/>
+      </g>
+    </svg>
+    <div class="menu" *ngIf="menuOpen">
+      <table>
+        <tr>
+          <td>
+            <label for="theme">
+              Select theme
+            </label>
+          </td>
+          <td>
+            <select [ngModel]="theme" (ngModelChange)="updateThem($event)">
+              <option *ngFor="let themeOption of themeOptions" value="{{themeOption}}">{{themeOption}}</option>
+            </select>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</header>

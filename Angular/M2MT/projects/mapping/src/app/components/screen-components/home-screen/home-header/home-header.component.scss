@@ -1,0 +1,91 @@
+@use '../home-screen-shared' as homeScreen;
+@use '../../../../../../../shared/src/lib/styles/variables';
+@use '../../../../../../../shared/src/lib/styles/functions';
+
+// logo is 80x21, those to make it fit at maximum it is multiplied
+// margin-top -bottom auto will vertically center the element
+#logo-pr {
+  background: url(https://www.prorail.nl/static/prorail/img/logo_default.svg) no-repeat;
+  background-size: 100%;
+  width: 190px;
+  height: 42px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+// logo is 400px x 93px, those to get it between 50px it needs to be devided
+// margin-top -bottom auto will vertically center the element
+#logo-eulynx {
+  background: url(https://www.eulynx.eu/images/eulinx/eulynx-logo.png) no-repeat;
+  background-size: 100%;
+  height: 46.5px;
+  width: 200px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.hands {
+  font-size: 2.5em;
+}
+
+header {
+  width: 100vw;
+  height: homeScreen.$home-nav-real-height;
+  background-color: variables.$theme-primary;
+  @include functions.centerItems();
+}
+
+.top-header {
+  height: homeScreen.$home-nav-real-height;
+}
+
+.menu-entry {
+  width: homeScreen.$home-nav-real-height;
+  height: homeScreen.$home-nav-real-height;
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  background-color: variables.$theme-primary-negative-accent;
+  cursor: pointer;
+}
+
+.menu-entry:hover {
+  background-color: variables.$theme-primary-accent;
+}
+
+.menu-entry svg {
+  width: 100%;
+  height: 100%;
+}
+
+.menu-entry svg path {
+  fill: variables.$primary-accent;
+  stroke: variables.$primary;
+}
+
+.menu-entry {
+  width: homeScreen.$home-nav-real-height;
+  height: homeScreen.$home-nav-real-height;
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+
+.menu {
+  position: absolute;
+  top: homeScreen.$home-nav-real-height;
+  right: 0;
+  background-color: variables.$theme-primary-negative-accent;
+  border: solid variables.$border-thickness variables.$theme-primary;
+  // 200px could also have been 150px or 250px, does not reflect anything
+  min-width: 200px;
+  padding: variables.$padding;
+  z-index: 20;
+}
+
+table, select {
+  width: 100%;
+}
+

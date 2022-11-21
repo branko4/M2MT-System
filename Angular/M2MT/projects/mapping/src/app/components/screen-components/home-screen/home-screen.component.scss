@@ -1,0 +1,25 @@
+@use '../../../../../../shared/src/lib/styles/variables';
+@use './home-screen-shared' as homeScreen;
+
+
+$padding-height: 10vh;
+$padding-width: 20vh;
+
+main {
+  margin: 0;
+  padding: $padding-height $padding-width;
+  background-color: variables.$theme-primary-accent;
+  min-height: calc((100vh - 2 * $padding-height) - (homeScreen.$home-nav-height + variables.$footer-height));
+  width: calc(100vw - 2*$padding-width);
+}
+
+h1 {
+  width: 100%;
+  font-size: 2em;
+  text-align: center;
+}
+
+.centered-items {
+  height: 200px;
+  width: 100%;
+}

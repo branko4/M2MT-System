@@ -1,1 +1,11 @@
-<p>create-mapping-rule-component works!</p>
+<lib-pop-up (backgroundClick)="cancel()">
+  <header>
+    <h2>Create mapping rule</h2>
+  </header>
+  <lib-stepper [(steps)]="steps" (stepsChange)="onFormDataChanged()"></lib-stepper>
+  <hr/>
+  <div class="control">
+    <button class="danger text-button" (click)="cancel()">Cancel</button>
+    <button class="primary button" (click)="create()" [disabled]="creatable">Create</button>
+  </div>
+</lib-pop-up>

@@ -1,0 +1,30 @@
+<table cellspacing="0">
+  <thead>
+    <tr>
+      <th *ngFor="let header of data.headers">
+        <div class="column">
+          {{header}}
+        </div>
+      </th>
+      <th *ngIf="data.actions.length > 0">
+        <div class="column">
+          Actions
+        </div>
+      </th>
+    </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let row of data.rows; index as i">
+    <td *ngFor="let column of row; index as indexColumn" (click)="rowSelected(i)">
+      <div class="column">
+        {{column}}
+      </div>
+    </td>
+    <td *ngIf="data.actions.length > 0">
+      <div class="column">
+        <button class="text-button danger" *ngFor="let action of data.actions" (click)="action.Clicked(i)">{{action.name}}</button>
+      </div>
+    </td>
+  </tr>
+</tbody>
+</table>
