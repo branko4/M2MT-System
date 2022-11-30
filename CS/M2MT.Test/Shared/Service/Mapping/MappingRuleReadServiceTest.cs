@@ -21,7 +21,20 @@ namespace M2MT.Test.Shared.Service.Mapping
             return TestA
                 .ObjectWithType<MappingRuleReadService>()
                 .AddBuildedParameterAs(A.Fake<IMappingRuleReadRepository>())
-                .WithMethodConfiguration(conf);
+                .WithMethodConfiguration(conf)
+                .AddBuildedParameterAs(A.Fake<IMappingRelationReadRepository>())
+                .WithMethodConfiguration(CreateRelationRepositoryConfig());
+        }
+
+        private MethodConfiguration<IMappingRelationReadRepository>[] CreateRelationRepositoryConfig()
+        {
+            return new MethodConfiguration<IMappingRelationReadRepository>[]
+            {
+                new MethodConfiguration<IMappingRelationReadRepository>((repo) =>
+                {
+                    return A.CallTo(() => repo.GetAllMappingRelations(A<Guid>.Ignored)).Returns(new List<MappingRelation>());
+                })
+            };
         }
 
         protected override MethodConfiguration<IMappingRuleReadRepository> BuildConfForUutDepenedencyGetAll()

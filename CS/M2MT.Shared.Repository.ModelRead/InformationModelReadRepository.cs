@@ -17,14 +17,21 @@ namespace M2MT.Shared.Repository.Model
         public InformationModelReadRepository(IDbConnection dbConnection)
         {
             this.dbConnection = dbConnection;
+            if (dbConnection.State != ConnectionState.Open) dbConnection.Open();
         }
 
-        public async Task<IEnumerable<InformationModel>> GetModels()
+        public async Task<IEnumerable<InformationModel>> GetAll()
         {
-            dbConnection.Open();
             var models = await dbConnection.QueryAsync<ModelEntity>("SELECT * FROM model.\"Models\"");
-            dbConnection.Close();
             return Converter.ConvertList<InformationModel, ModelEntity>(models);
+        }
+
+        public async Task<InformationModel> GetOne(Guid ID)
+        {
+            var mappingRuleEntity = await dbConnection.QueryFirstAsync<ModelEntity>(
+                "SELECT * FROM model.\"Models\" WHERE \"ID\" = @ID;",
+                new { ID = ID });
+            return mappingRuleEntity.Convert();
         }
     }
 }

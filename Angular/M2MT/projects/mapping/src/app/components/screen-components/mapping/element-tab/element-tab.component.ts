@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { BasicElement } from 'projects/shared/src/lib/Data/models/element.model';
+import { Element } from 'projects/shared/src/lib/Data/models/element.model';
 
 @Component({
   selector: 'app-element-tab',
@@ -7,5 +7,5 @@ import { BasicElement } from 'projects/shared/src/lib/Data/models/element.model'
   styleUrls: ['./element-tab.component.scss']
 })
 export class ElementTabComponent {
-  @Input() elements: BasicElement[] = [];
+  @Input() elements: Element[] = [];
 }

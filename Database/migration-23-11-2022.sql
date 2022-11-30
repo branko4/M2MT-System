@@ -1,0 +1,32 @@
+ALTER TABLE model."Elements"
+ADD COLUMN IF NOT EXISTS "Parent" uuid;
+
+ALTER TABLE mapping."Mappings"
+ADD COLUMN IF NOT EXISTS "Name" character varying(100);
+
+ALTER TABLE mapping."Coupled_elements"
+    DROP CONSTRAINT "COUPLED_ELEMENT_MAPPING_RULE_FK";
+
+ALTER TABLE mapping."Coupled_elements"
+    ADD CONSTRAINT "COUPLED_ELEMENT_MAPPING_RULE_FK" FOREIGN KEY ("Mapping_rule")
+    REFERENCES mapping."Mapping_rules" ("ID") MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE CASCADE;
+
+ALTER TABLE mapping."Mapping_relations"
+    DROP CONSTRAINT "MAPPING_RELATION_MAPPING_RULE_FK";
+
+ALTER TABLE mapping."Mapping_relations"
+    ADD CONSTRAINT "MAPPING_RELATION_MAPPING_RULE_FK" FOREIGN KEY ("Mapping_rule")
+    REFERENCES mapping."Mapping_rules" ("ID") MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE CASCADE;
+
+ALTER TABLE mapping."Mapping_rules"
+      DROP CONSTRAINT "MAPPING_RULE_MAPPING_FK";
+
+ALTER TABLE mapping."Mapping_rules"
+    ADD CONSTRAINT "MAPPING_RULE_MAPPING_FK" FOREIGN KEY ("Mapping")
+    REFERENCES mapping."Mappings" ("ID") MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE CASCADE;

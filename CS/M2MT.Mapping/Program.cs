@@ -33,6 +33,9 @@ namespace M2MT.Mapping
             builder.Services.AddTransient<IMappingCRUDService, MappingCRUDService>();
             builder.Services.AddTransient<IMappingRelationCRUDService, MappingRelationCRUDService>();
             builder.Services.AddTransient<IMappingRuleCRUDService, MappingRuleCRUDService>();
+            builder.Services.AddTransient<IMappingReadService, MappingReadService>();
+            builder.Services.AddTransient<IMappingRuleReadService, MappingRuleReadService>();
+            builder.Services.AddTransient<IMappingRelationReadService, MappingRelationReadService>();
 
             // Repositories
             builder.Services.AddTransient<IInformationModelReadRepository, InformationModelReadRepository>();
@@ -41,6 +44,9 @@ namespace M2MT.Mapping
             builder.Services.AddTransient<IMappingCRUDRepository, MappingCRUDRepository>();
             builder.Services.AddTransient<IMappingRelationCRUDRepository, MappingRelationCRUDRepository>();
             builder.Services.AddTransient<IMappingRuleCRUDRepository, MappingRuleCRUDRepository>();
+            builder.Services.AddTransient<IMappingReadRepository, MappingReadRepository>();
+            builder.Services.AddTransient<IMappingRelationReadRepository, MappingRelationReadRepository>();
+            builder.Services.AddTransient<IMappingRuleReadRepository, MappingRuleReadRepository>();
             
 
             builder.Services.AddScoped<IDbConnection, NpgsqlConnection>((IServiceProvider sp) =>

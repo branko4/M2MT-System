@@ -1,17 +1,20 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Element } from 'projects/shared/src/lib/Data/models/element.model';
 import { Step, StepComponent } from 'projects/shared/src/public-api';
+import { ModelService } from '../../../service/model.service';
 import { PositionInList } from './empty-element/empty-element.component';
 
 interface ExpectedData {
   input: {
-    modelRef: {
-      id: string,
-      id2: string,
-    }
+    modelRef: string
   },
   output: {
     selectedElement?: {name: string}
   },
+}
+
+interface TaxonomyElement extends Element {
+  childeren: TaxonomyElement[];
 }
 
 @Component({
@@ -22,6 +25,8 @@ interface ExpectedData {
 export class SelectElementComponent implements StepComponent<ExpectedData> {
   @Output() selected = new EventEmitter<{name: string}>()
   data?: ExpectedData;
+
+  constructor(private modelService: ModelService) {}
   
   static GetReference(data: ExpectedData): Step<ExpectedData> {
     return {
@@ -41,70 +46,47 @@ export class SelectElementComponent implements StepComponent<ExpectedData> {
     this.dataChange.emit(this.data);
   }
 
-
   injectData(data: ExpectedData): void {
-    // service requist
-    if (data.input.modelRef.id == "EULYNX") {
-        this.rootElement = {
-        name: "EULYNXDataPrepInterface",
-        childElements: [],
-      }
-    }
+    this.modelService.GetElementsOfModel(data.input.modelRef).subscribe((data: Element[]) => {
+      this.rootElement = this.createTaxonomy(data);
+    });
+    
     this.data = data;
   }
+
+  private createTaxonomy(elements: Element[]): TaxonomyElement {
+    var topElement = elements.filter((element: Element) => element.parent === "00000000-0000-0000-0000-000000000000")[0];
+    var childeren = this.createTaxonomies(elements, topElement.id);
+    return {
+      ...topElement,
+      childeren: childeren,
+    }
+  }
+
+  private createTaxonomies(elements: Element[], elementID: string): TaxonomyElement[] {
+    var filteredElements = elements.filter((element: Element) => element.parent === elementID);
+    var taxonomyElements: TaxonomyElement[] = [];
+    for (let index = 0; index < filteredElements.length; index++) {
+      const element = filteredElements[index];
+      taxonomyElements[index] = {
+        ...element,
+        childeren: this.createTaxonomies(elements, element.id),
+      };
+    };
+    return taxonomyElements;
+  }
+
   dataChange = new EventEmitter();
   readonly FALSE = false;
 
-  @Input() rootElement: any = {
-    name: "tBase",
-    childElements: [
-      {name: "tPointLocation", childElements: [
-        {name: "tPointLocation", childElements: [
-          {name: "tPointLocation", childElements: []},
-          {name: "tPointLocation", childElements: []},
-        ]},
-        {name: "tPointLocation", childElements: []},
-        {name: "tPointLocation", childElements: []},
-      ]},
-      {name: "tPointLocation", childElements: [
-        {name: "tPointLocation", childElements: []},
-        {name: "tPointLocation", childElements: [
-          {
-            name: "tBase",
-            childElements: [
-              {name: "tPointLocation", childElements: [
-                {name: "tPointLocation", childElements: [
-                  {name: "tPointLocation", childElements: []},
-                  {name: "tPointLocation", childElements: []},
-                ]},
-                {name: "tPointLocation", childElements: []},
-                {name: "tPointLocation", childElements: []},
-              ]},
-              {name: "tPointLocation", childElements: [
-                {name: "tPointLocation", childElements: []},
-                {name: "tPointLocation", childElements: []},
-              ]},
-              {name: "tPointLocation", childElements: [
-                {name: "tPointLocation", childElements: []},
-              ]},
-              {name: "tPointLocation", childElements: []},
-            ]
-          },
-        ]},
-      ]},
-      {name: "tPointLocation", childElements: [
-        {name: "tPointLocation", childElements: []},
-      ]},
-      {name: "tPointLocation", childElements: []},
-    ]
-  }
+  @Input() rootElement?: TaxonomyElement;
   @Input() positionInList: PositionInList = PositionInList.FIRST;
   @Input() isRootElement = true;
 
   position(index: number): PositionInList {
-    if (this.rootElement.childElements.length === 1) return PositionInList.ALL;
+    if (this.rootElement?.childeren.length === 1) return PositionInList.ALL;
     if (index === 0) return PositionInList.FIRST;
-    if (index === this.rootElement.childElements.length - 1) return PositionInList.LAST;
+    if (this.rootElement?.childeren && index === this.rootElement?.childeren.length - 1) return PositionInList.LAST;
     return PositionInList.MIDDLE;
   }
 

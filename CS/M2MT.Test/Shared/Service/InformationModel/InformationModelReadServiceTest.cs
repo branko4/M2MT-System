@@ -28,7 +28,7 @@ namespace M2MT.Test.Shared.Service.InformationModel
         {
             return new MethodConfiguration<IInformationModelReadRepository>((repoFake) =>
             {
-                return A.CallTo(() => repoFake.GetModels()).Returns(new List<Model>());
+                return A.CallTo(() => repoFake.GetAll()).Returns(new List<Model>());
             });
         }
     }

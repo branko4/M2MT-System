@@ -29,9 +29,10 @@ namespace M2MT.Mapping.Controllers
         }
 
         [HttpDelete]
-        public Task<MappingRelation> Delete([FromBody] MappingRelation mapping)
+        [Route("{mappingRelationID}")]
+        public Task<MappingRelation> Delete([FromRoute] Guid mappingRelationID)
         {
-            return service.Remove(mapping);
+            return service.Remove(mappingRelationID);
         }
     }
 }

@@ -19,10 +19,11 @@ namespace M2MT.Shared.Service.Mapping
 
         public async Task<MappingModel> Create(MappingModel mapping)
         {
+            mapping.ID = Guid.NewGuid();
             return await _repository.Create(mapping);
         }
 
-        public async Task<MappingModel> Remove(MappingModel mapping)
+        public async Task<MappingModel> Remove(Guid mapping)
         {
             return await _repository.Remove(mapping);
         }

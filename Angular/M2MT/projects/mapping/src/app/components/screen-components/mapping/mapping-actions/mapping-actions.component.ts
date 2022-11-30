@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { MappingService } from 'projects/mapping/src/app/service/mapping.service';
 import { Subscription } from 'rxjs';
 
@@ -8,19 +9,27 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./mapping-actions.component.scss']
 })
 export class MappingActionsComponent implements OnInit, OnDestroy {
-  subscription?: Subscription;
+  subscriptions: Subscription[] = [];
   cancelable = false;
+  mappingRuleID?: string;
 
-  constructor(private mappingService: MappingService) { }
+  constructor(private mappingService: MappingService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.subscription = this.mappingService.observers.cancelable.subscribe((cancelable) => {
-      this.cancelable = cancelable
-    });
+    this.subscriptions.push(
+      this.mappingService.observers.cancelable.subscribe((cancelable) => {
+        this.cancelable = cancelable
+      })
+    );
+    this.subscriptions.push(
+      this.route.params.subscribe((params) => {this.mappingRuleID = params["mappingRuleID"]})
+    );
   }
 
   ngOnDestroy(): void {
-    this.subscription?.unsubscribe();
+    this.subscriptions.forEach((subscription) => {
+      subscription.unsubscribe();
+    })
   }
 
   onDelete() {
@@ -28,7 +37,8 @@ export class MappingActionsComponent implements OnInit, OnDestroy {
   }
 
   onCreate() {
-    this.mappingService.create();
+    if (!this.mappingRuleID) return;
+    this.mappingService.create(this.mappingRuleID);
   }
 
   onCancel() {

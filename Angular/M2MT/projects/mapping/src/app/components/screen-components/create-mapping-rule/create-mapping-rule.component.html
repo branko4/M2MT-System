@@ -2,7 +2,10 @@
   <header>
     <h2>Create mapping rule</h2>
   </header>
-  <lib-stepper [(steps)]="steps" (stepsChange)="onFormDataChanged()"></lib-stepper>
+  <lib-stepper *ngIf="steps !== undefined" [(steps)]="steps" (stepsChange)="onFormDataChanged()"></lib-stepper>
+  <div *ngIf="steps === undefined" class="stepper-placeholder">
+    <span>Loading ...</span>
+  </div>
   <hr/>
   <div class="control">
     <button class="danger text-button" (click)="cancel()">Cancel</button>

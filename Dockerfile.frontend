@@ -1,0 +1,27 @@
+from node:19 AS base
+
+RUN npm install -g @angular/cli
+
+## === SDK === ##
+FROM base AS sdk
+
+EXPOSE 4200
+
+WORKDIR /app
+
+## === STE === ##
+FROM sdk AS ste
+
+COPY Angular/M2MT /app
+
+## === BUILD === ##
+FROM ste AS BUILD
+
+RUN ng build mapping
+
+## === DEPLOY === ##
+FROM nginx:1.23.2-alpine AS deploy
+
+COPY Build/Angular/.conf /etc/nginx/conf.d/default.conf
+
+COPY --from=build /app/dist/mapping /usr/share/nginx/html

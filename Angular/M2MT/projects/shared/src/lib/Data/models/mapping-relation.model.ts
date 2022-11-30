@@ -1,4 +1,7 @@
-import { Base } from "./_base.model";
 
-export interface MappingRelation extends Base {
+export interface MappingRelation {
+  id: string; 
+  mappingRule: string;
+  attributeLeft: string;
+  attributeRight: string;
 }

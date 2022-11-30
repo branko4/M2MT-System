@@ -9,15 +9,31 @@ services:
       PGUSER: mapping_system
       PGPASSWORD: hello
       PGHOST: database
-    ports:
-      - "8080:80"
     networks:
       - back-tier
       - data-tier
-  # proxy:
-  #   build:
-  #     context: .
-  #     dockerfile: Dockerfile.proxy
+  proxy:
+    build:
+      context: Proxy
+      dockerfile: Dockerfile
+    depends_on:
+      - mapping-backend
+      - mapping-frontend
+    environment:
+      PROXY_MAPPING_API_PATH: "api/"
+      PROXY_MAPPING_API_LOCATION: "http://mapping-backend:80/api/"
+      PROXY_MAPPING_APP_LOCATION: "http://mapping-frontend/"
+    networks:
+      - back-tier
+      - front-tier
+    ports:
+      - "80:80"
+  mapping-frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    networks:
+      - front-tier
   database:
     image: postgres:14.0
     networks:

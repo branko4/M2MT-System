@@ -1,0 +1,12 @@
+server {
+    listen       80;
+    server_name  localhost proxy;
+
+    location /${PROXY_MAPPING_API_PATH} {
+        proxy_pass ${PROXY_MAPPING_API_LOCATION};
+    }
+
+    location / {
+        proxy_pass ${PROXY_MAPPING_APP_LOCATION};
+    }
+}

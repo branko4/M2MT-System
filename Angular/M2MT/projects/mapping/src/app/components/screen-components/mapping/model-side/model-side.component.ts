@@ -1,58 +1,39 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { BasicElement } from 'projects/shared/src/lib/Data/models/element.model';
-import { TaxonomyElement } from 'projects/shared/src/lib/Data/dto/elements.dto';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { LeftModelSide, ModelSide } from '../element/element.component';
+import { ModelService } from 'projects/mapping/src/app/service/model.service';
+import { Element } from 'projects/shared/src/lib/Data/models/element.model';
+import { ParentRelationElement } from '../ParentRelationElement.class';
 
 @Component({
   selector: 'app-model-side',
   templateUrl: './model-side.component.html',
   styleUrls: ['./model-side.component.scss']
 })
-export class ModelSideComponent implements OnInit {
-  @Input() model: { elements: BasicElement[]} = { 
-    elements: [
-      { name: "Bufferstop", id: "randomID123", },
-      { name: "VehicleStop", id: "randomID124", },
-    ], 
-  };
+export class ModelSideComponent implements OnInit, OnChanges {
   @Input() modelSide: ModelSide = new LeftModelSide();
-  activeElement?: BasicElement;
-  loadableElement?: TaxonomyElement;
+  @Input() activeElement?: Element;
+  loadableElement?: ParentRelationElement;
 
-  constructor() { }
+  constructor(private modelService: ModelService) { }
 
   ngOnInit(): void {
-    this.activeElement = this.model.elements[0];
-    this.loadElement();
+    if (!this.activeElement) return;
+    var activeElement = this.activeElement;
+    this.modelService.GetElementWithParent(activeElement.id).subscribe((elements: Element[]) => { 
+      this.loadableElement = this.loadElement(elements, activeElement.id);
+    });
   }
 
-  loadElement() {
-    if (!this.activeElement) return;
-    const element = this.activeElement;
-    // server call
-    this.loadableElement = {
-      parent: {
-        name: "VehicleStop",
-        id: "randomId45",
-        parent: {
-          name: "TrackAsset",
-          id: "randomId032",
-          parent: {
-            name: "EULYNX::Base",
-            id: "randomId20",
-            parent: {
-              name: "RSM::Base",
-              id: "randomId20",
-              childs: [],
-            },
-            childs: [],
-          },
-          childs: [],
-        },
-        childs: [],
-      },
-      childs: [],
+  ngOnChanges(changes: SimpleChanges): void {
+    this.ngOnInit();
+  }
+
+  loadElement(elements: Element[], id: string):  ParentRelationElement | undefined{
+    if (id == "00000000-0000-0000-0000-000000000000") return;
+    var element = elements.filter(element => element.id === id)[0];
+    return {
       ...element,
-    };
+      parent: this.loadElement(elements, element.parent),
+    }
   }
 }

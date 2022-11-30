@@ -9,6 +9,8 @@ namespace M2MT.Test.Shared.Service.Mapping
     public class MappingRelationCRUDServiceTest : GenericCRUDServiceTest<MappingRelationCRUDService, MappingRelation, IMappingRelationCRUDRepository>
     {
         private Guid ID = Guid.NewGuid();
+        private Guid LeftID = Guid.NewGuid();
+        private Guid RightID = Guid.NewGuid();
 
         protected override UUTBuilder<MappingRelationCRUDService> BuildAUutInstance(MethodConfiguration<IMappingRelationCRUDRepository>[] conf)
         {
@@ -30,7 +32,7 @@ namespace M2MT.Test.Shared.Service.Mapping
         {
             return new MethodConfiguration<IMappingRelationCRUDRepository>((repoFake) =>
             {
-                return A.CallTo(() => repoFake.Remove(A<MappingRelation>.Ignored)).Returns(new MappingRelation() { ID = ID });
+                return A.CallTo(() => repoFake.GetOne(A<Guid>.Ignored)).Returns(new MappingRelation() { ID = ID, AttributeLeft = this.LeftID, AttributeRight = this.RightID });
             });
         }
 
@@ -44,7 +46,7 @@ namespace M2MT.Test.Shared.Service.Mapping
 
         protected override MappingRelation CreateOutput()
         {
-            return new MappingRelation() { ID = this.ID };
+            return new MappingRelation() { ID = this.ID, AttributeLeft = this.LeftID, AttributeRight = this.RightID };
         }
 
         protected override object[] CreateParams()
@@ -59,7 +61,7 @@ namespace M2MT.Test.Shared.Service.Mapping
 
         protected override object[] RemoveParams()
         {
-            return this.CreateParams();
+            return new object[] { this.ID };
         }
     }
 }

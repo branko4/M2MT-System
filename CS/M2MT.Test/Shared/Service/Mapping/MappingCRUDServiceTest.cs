@@ -37,7 +37,7 @@ namespace M2MT.Test.Shared.Service.Mapping
 
         protected override object[] RemoveParams()
         {
-            return this.CreateParams();
+            return new object[] { this.ID };
         }
 
         protected override MethodConfiguration<IMappingCRUDRepository> BuildConfForUutDependencyCreate()
@@ -52,7 +52,7 @@ namespace M2MT.Test.Shared.Service.Mapping
         {
             return new MethodConfiguration<IMappingCRUDRepository>((repoFake) =>
             {
-                return A.CallTo(() => repoFake.Remove(A<MappingModel>.Ignored)).Returns(new MappingModel() { ID = this.ID });
+                return A.CallTo(() => repoFake.Remove(A<Guid>.Ignored)).Returns(new MappingModel() { ID = this.ID });
             });
         }
 

@@ -13,7 +13,7 @@ header {
   border-radius: variables.$border-radius variables.$border-radius 0 0;
 }
 
-lib-stepper {
+lib-stepper, .stepper-placeholder {
   width: 600px;
   height: 450px;
   display: block;
