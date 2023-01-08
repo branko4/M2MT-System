@@ -21,6 +21,12 @@ namespace M2MT.Shared.Repository.Model
             if (dbConnection.State != ConnectionState.Open) dbConnection.Open();
         }
 
+        public async Task<bool> Excists(Guid attributeRef)
+        {
+            return await dbConnection.QueryFirstAsync<bool>("SELECT 1 FROM model.\"Attributes\" WHERE \"ID\" = @ID",
+                new { ID = attributeRef });
+        }
+
         public async Task<IEnumerable<AttributeModel>> GetAll()
         {
             // TODO add to docs; according to the docs connection should be opend before use and closed after, this is more efficient, then creating a new connection each time

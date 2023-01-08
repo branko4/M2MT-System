@@ -50,13 +50,44 @@ namespace M2MT.Test.Shared.Util
 
         public async void ReturnsAsync<EXPECTED_TYPE>(EXPECTED_TYPE EXPECTED)
         {
+            var actual = await this.Execute<EXPECTED_TYPE>();
+
+            Assert.Equal(EXPECTED, actual);
+        }
+
+        public async void ThrowsAsync<ExceptionType, EXPECTED_TYPE>()
+        {
+            this.ThrowsAsync<EXPECTED_TYPE>(null, new[] {typeof(ExceptionType)});
+        }
+
+        public async void ThrowsAsync<ExceptionType, EXPECTED_TYPE>(string[] expectedPossibleErrorMessages)
+        {
+            this.ThrowsAsync<EXPECTED_TYPE>(expectedPossibleErrorMessages, new[] { typeof(ExceptionType) });
+        }
+
+        // Since some action could return more then one exception it is better to check if the given exception is a valid one
+        public async void ThrowsAsync<EXPECTED_TYPE>(string[]? expectedPossibleErrorMessages, Type[] expectedExceptionTypes)
+        {
+            try
+            {
+                await this.Execute<EXPECTED_TYPE>();
+                Assert.True(false);
+            } catch (Exception e)
+            {
+                Assert.Contains(e.GetType(), expectedExceptionTypes);
+                if (expectedPossibleErrorMessages == null) return;
+                Assert.Contains(e.Message, expectedPossibleErrorMessages);
+            }
+            
+        }
+
+        private async Task<EXPECTED_TYPE> Execute<EXPECTED_TYPE>()
+        {
             Type uutType = typeof(UUT);
             MethodInfo uutMethod = uutType.GetMethod(_functionName);
             if (uutMethod == null) throw new Exception($"Function with name {_functionName} is not found, please check if it exists");
             Task<EXPECTED_TYPE> asyncedReturn = (Task<EXPECTED_TYPE>)uutMethod.Invoke(this._uut, _params);
-            EXPECTED_TYPE actual = await asyncedReturn;
-
-            Assert.Equal(EXPECTED, actual);
+            return await asyncedReturn;
         }
 
         public FunctionTestBuilder<UUT> WithParams(object[] objects)
@@ -64,6 +95,7 @@ namespace M2MT.Test.Shared.Util
             _params = objects;
             return this;
         }
+
     }
 
     public class UUTBuilder<UUT>

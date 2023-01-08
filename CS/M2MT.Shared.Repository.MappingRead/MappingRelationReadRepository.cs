@@ -40,5 +40,11 @@ namespace M2MT.Shared.Repository.Mapping
                 new { ID = mappingRelation });
             return mappingRelationEntity.Convert();
         }
+
+        public async Task<bool> Excists(Guid mappingRelationRef)
+        {
+            return await dbConnection.QueryFirstAsync<bool>("SELECT 1 FROM mapping.\"Mapping_relations\" WHERE mapping.\"Mapping_relations\".\"ID\" = @ID;",
+                new { ID = mappingRelationRef });
+        }
     }
 }

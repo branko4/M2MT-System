@@ -22,6 +22,12 @@ namespace M2MT.Shared.Repository.Mapping
             return createdMapping.Convert();
         }
 
+        public async Task<bool> Excists(Guid mapping)
+        {
+            return await dbConnection.QueryFirstAsync<bool>("SELECT 1 FROM mapping.\"Mappings\" WHERE \"Mappings\".\"ID\" = @ID; ",
+                new { ID = mapping });
+        }
+
         public async Task<MappingModel> Remove(Guid mapping)
         {
             await dbConnection.QueryAsync<MappingEntity>(

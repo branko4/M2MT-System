@@ -30,12 +30,13 @@ export class MappingRuleListComponent implements OnInit {
         this.data.rows = [];
         var i = 0;
         data.forEach(mappingRule => {
+          console.log(mappingRule);
           this.data.rows[i] = [ 
             mappingRule.id, 
             mappingRule.name, 
           ];
+          i++;
         });
-        i++;
       });
     });
   }

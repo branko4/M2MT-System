@@ -8,5 +8,6 @@ namespace M2MT.Shared.IRepository
     {
         public Task<IEnumerable<Model>> GetAll();
         public Task<Model> GetOne(Guid id);
+        public Task<bool> Excists(Guid id);
     }
 }

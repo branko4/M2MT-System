@@ -4,32 +4,30 @@ using M2MT.Shared.Service.Model;
 using M2MT.Test.Shared.Util.GenericTest;
 using M2MT.Test.Shared.Util;
 using M2MT.Shared.Model.InformationModel;
+using IModel = M2MT.Shared.Model.InformationModel.Model;
 
 namespace M2MT.Test.Shared.Service.InformationModel
 {
     public class InformationModelReadServiceTest : GenericReadServiceTest<InformationModelReadService, Model, IInformationModelReadRepository>
     {
+        public InformationModelReadServiceTest()
+        {
+            base.ListOfAllObjects = model.KnowModels;
+        }
 
         [Fact]
         public void Constructor_RepositoryIsFake_IsInstanceOfIInformationModelReadService()
         {
-            BuildAUutInstance(WITH_NO_CONFIGURATION).IsInstanceOf<IInformationModelReadService>();
+            BuildAUutInstance().IsInstanceOf<IInformationModelReadService>();
         }
 
-        protected override UUTBuilder<InformationModelReadService> BuildAUutInstance(MethodConfiguration<IInformationModelReadRepository>[] conf)
+        protected override UUTBuilder<InformationModelReadService> BuildAUutInstance()
         {
             return TestA
                 .ObjectWithType<InformationModelReadService>()
+                // model repo
                 .AddBuildedParameterAs(A.Fake<IInformationModelReadRepository>())
-                .WithMethodConfiguration(conf);
-        }
-
-        protected override MethodConfiguration<IInformationModelReadRepository> BuildConfForUutDepenedencyGetAll()
-        {
-            return new MethodConfiguration<IInformationModelReadRepository>((repoFake) =>
-            {
-                return A.CallTo(() => repoFake.GetAll()).Returns(new List<Model>());
-            });
+                .WithMethodConfiguration(GenericFakes.GetReadMethodConfiguration<IInformationModelReadRepository, IModel>(model.KnowModels));
         }
     }
 }

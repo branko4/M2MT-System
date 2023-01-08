@@ -52,5 +52,10 @@ namespace M2MT.Shared.Repository.Model
                 new { ID = id });
             return element.Convert();
         }
+        public async Task<bool> Excists(Guid elementRef)
+        {
+            return await dbConnection.QueryFirstAsync<bool>("SELECT 1 FROM model.\"Elements\" WHERE \"Model\" = @ID",
+                new { ID = elementRef });
+        }
     }
 }

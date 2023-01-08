@@ -1,4 +1,5 @@
 ﻿
+using M2MT.Shared.Exceptions;
 using M2MT.Shared.IRepository.InformationModel;
 using M2MT.Shared.IService.InformationModel;
 using M2MT.Shared.Model;
@@ -6,16 +7,20 @@ using M2MT.Shared.Model.InformationModel;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using IModel = M2MT.Shared.Model.InformationModel.Model;
+
 
 namespace M2MT.Shared.Service.Model
 {
     public class ElementReadService : IElementReadService
     {
         private IElementReadRepository _repository;
+        private IInformationModelReadRepository _modelRepository;
 
-        public ElementReadService(IElementReadRepository repository)
+        public ElementReadService(IElementReadRepository repository, IInformationModelReadRepository modelRepository)
         {
             _repository = repository;
+            _modelRepository = modelRepository;
         }
 
         public Task<IEnumerable<Element>> GetAll()
@@ -23,9 +28,11 @@ namespace M2MT.Shared.Service.Model
             return _repository.GetAll();
         }
 
-        public Task<IEnumerable<Element>> GetAllElementsOfModel(Guid refTo)
+        public async Task<IEnumerable<Element>> GetAllElementsOfModel(Guid refTo)
         {
-            return _repository.GetAllElementsOfModel(refTo);
+            if (!await this._modelRepository.Excists(refTo)) throw new NotFoundException<IModel>();
+            if (new Guid().Equals(refTo)) throw new ArgumentException();
+            return await _repository.GetAllElementsOfModel(refTo);
         }
 
         public Task<IEnumerable<Element>> GetElementsMatchingID(IEnumerable<Guid> elementIDs)

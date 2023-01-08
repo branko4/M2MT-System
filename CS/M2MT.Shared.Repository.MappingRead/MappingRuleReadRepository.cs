@@ -47,5 +47,11 @@ namespace M2MT.Shared.Repository.Mapping
                 );
             return mappingRuleEntity.Convert();
         }
+
+        public async Task<bool> Excists(Guid mappingRuleRef)
+        {
+            return await dbConnection.QueryFirstAsync<bool>("SELECT 1 FROM mapping.\"Mapping_rules\" WHERE mapping.\"Mapping_rules\".\"ID\" = @ID;",
+                new { ID = mappingRuleRef });
+        }
     }
 }

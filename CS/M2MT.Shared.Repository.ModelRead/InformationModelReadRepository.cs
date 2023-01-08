@@ -20,6 +20,12 @@ namespace M2MT.Shared.Repository.Model
             if (dbConnection.State != ConnectionState.Open) dbConnection.Open();
         }
 
+        public async Task<bool> Excists(Guid modelRef)
+        {
+            return await dbConnection.QueryFirstAsync<bool>("SELECT 1 FROM model.\"Models\" WHERE \"ID\" = @ID; ",
+                new { ID = modelRef });
+        }
+
         public async Task<IEnumerable<InformationModel>> GetAll()
         {
             var models = await dbConnection.QueryAsync<ModelEntity>("SELECT * FROM model.\"Models\"");
