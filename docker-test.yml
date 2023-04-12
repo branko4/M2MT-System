@@ -44,16 +44,16 @@ services:
       POSTGRES_PASSWORD: example
     volumes:
       - M2MT-test-database:/var/lib/postgresql/data
-  backend-tester:
-    build:
-      context: .
-      dockerfile: Dockerfile.newman
-      args:
-        TARGET: mapping-backend
-    depends_on:
-      - mapping-backend
-    networks:
-      - back-tier
+  # backend-tester:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.newman
+  #     args:
+  #       TARGET: mapping-backend
+  #   depends_on:
+  #     - mapping-backend
+  #   networks:
+  #     - back-tier
 
 networks:
   front-tier: {}
