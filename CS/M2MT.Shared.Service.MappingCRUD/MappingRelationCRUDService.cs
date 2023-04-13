@@ -59,8 +59,8 @@ namespace M2MT.Shared.Service.Mapping
             if (left == null || right == null) throw new NotFoundException<AttributeModel>("attribute reference referenceses to unknown attribute");
 
             // check if relations of references are valid
-            if (!(mappingRule.Elements.Contains(new RefTo<Element> { ID = left.Element })
-                && mappingRule.Elements.Contains(new RefTo<Element> { ID = right.Element}))
+            if (!(mappingRule.ElementsWithIndirects.Contains(new RefTo<Element> { ID = left.Element })
+                && mappingRule.ElementsWithIndirects.Contains(new RefTo<Element> { ID = right.Element}))
                 ) throw new NotFoundException<AttributeModel>("attribute reference referenceses to unknown attribute for given mapping rule(s)");
 
             var leftElement = await _elementRepository.GetOne(left.Element);

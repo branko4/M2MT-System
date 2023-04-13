@@ -16,6 +16,7 @@ namespace M2MT.Shared.Entity.Mapping
         public Guid Mapping { get; set; }
 
         public IEnumerable<RefTo<Element>> Elements { get; set; }
+        public IEnumerable<RefTo<Element>> ElementsWithIndirects { get; set; }
 
         public MappingRuleEntity(MappingRule mapping)
         {
@@ -23,13 +24,14 @@ namespace M2MT.Shared.Entity.Mapping
             Name = mapping.Name;
             Mapping = mapping.Mapping;
             Elements = mapping.Elements;
+            ElementsWithIndirects = mapping.ElementsWithIndirects;
         }
 
         public MappingRuleEntity() { }
 
         public MappingRule Convert()
         {
-            return new MappingRule() { ID = ID, Mapping = Mapping, Name = Name, Elements = Elements };
+            return new MappingRule() { ID = ID, Mapping = Mapping, Name = Name, Elements = Elements, ElementsWithIndirects = ElementsWithIndirects };
         }
     }
 }

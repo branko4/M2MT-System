@@ -10,5 +10,6 @@ namespace M2MT.Shared.Model.Mapping
         public string Name { get; set; }
         public Guid Mapping { get; set; }
         public IEnumerable<RefTo<Element>> Elements { get; set; }
+        public IEnumerable<RefTo<Element>> ElementsWithIndirects { get; set; }
     }
 }

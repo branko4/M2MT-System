@@ -36,14 +36,21 @@ namespace M2MT.Shared.Repository.Mapping
             return Converter.ConvertList<MappingRule, MappingRuleEntity>(mappingRules);
         }
 
+        private static string GET_ELEMENTS_IN_MAPPINGRULE = "SELECT \"Element\" AS \"ID\" FROM mapping.\"Coupled_elements\", mapping.\"Mapping_rules\" WHERE \"Mapping_rules\".\"ID\" = \"Coupled_elements\".\"Mapping_rule\" and \"Coupled_elements\".\"Mapping_rule\" = @ID";
+
         public async Task<MappingRule> GetOne(Guid mappingRule)
         {
             var mappingRuleEntity = await dbConnection.QueryFirstAsync<MappingRuleEntity>(
                 "SELECT * FROM mapping.\"Mapping_rules\" WHERE mapping.\"Mapping_rules\".\"ID\" = @ID;",
                 new { ID = mappingRule });
             mappingRuleEntity.Elements = await dbConnection.QueryAsync<RefTo<Element>>(
-                "SELECT \"Element\" AS \"ID\" FROM mapping.\"Coupled_elements\", mapping.\"Mapping_rules\" WHERE \"Mapping_rules\".\"ID\" = \"Coupled_elements\".\"Mapping_rule\" and \"Coupled_elements\".\"Mapping_rule\" = @ID;",
+                GET_ELEMENTS_IN_MAPPINGRULE,
                 new {ID = mappingRule}
+                );
+            mappingRuleEntity.ElementsWithIndirects = await dbConnection.QueryAsync<RefTo<Element>>(
+                $"with recursive CTE AS ( SELECT * FROM model.\"Elements\" WHERE \"ID\" IN ({GET_ELEMENTS_IN_MAPPINGRULE}) UNION ALL SELECT e.* FROM model.\"Elements\" e INNER JOIN CTE o ON o.\"Parent\" = e.\"ID\") SELECT \"ID\" FROM CTE",
+                
+                new { ID = mappingRule }
                 );
             return mappingRuleEntity.Convert();
         }
