@@ -1,15 +1,16 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Element } from 'projects/shared/src/lib/Data/models/element.model';
 import { Step, StepComponent } from 'projects/shared/src/public-api';
 import { ModelService } from '../../../service/model.service';
 import { PositionInList } from './empty-element/empty-element.component';
+import { Base } from 'projects/shared/src/lib/Data/models/base.model';
 
 interface ExpectedData {
   input: {
     modelRef: string
   },
   output: {
-    selectedElement?: {name: string}
+    selectedElement?: Base
   },
 }
 
@@ -22,11 +23,23 @@ interface TaxonomyElement extends Element {
   templateUrl: './select-element.component.html',
   styleUrls: ['./select-element.component.scss']
 })
-export class SelectElementComponent implements StepComponent<ExpectedData> {
-  @Output() selected = new EventEmitter<{name: string}>()
+export class SelectElementComponent implements StepComponent<ExpectedData>, OnInit {
+  @Output() selected = new EventEmitter<Base>()
   data?: ExpectedData;
+  @Input() modelRef?: string;
 
   constructor(private modelService: ModelService) {}
+
+  ngOnInit(): void {
+    if (this.modelRef !== undefined) {
+        this.injectData({
+          input: {
+            modelRef: this.modelRef,
+          },
+          output: {}
+        });
+    }
+  }
   
   static GetReference(data: ExpectedData): Step<ExpectedData> {
     return {
@@ -35,12 +48,12 @@ export class SelectElementComponent implements StepComponent<ExpectedData> {
     };
   }
 
-  clicked(elementRef: {name: string}) {
+  clicked(elementRef: Base) {
     if (this.rootElement) this.updateData(elementRef);
     this.selected.emit(elementRef);
   }
 
-  updateData(elementRef: {name: string}) {
+  updateData(elementRef: Base) {
     if (this.data === undefined) return;
     this.data.output.selectedElement = elementRef;
     this.dataChange.emit(this.data);

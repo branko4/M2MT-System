@@ -1,7 +1,6 @@
+import { NamedBase } from "./base.model";
 
-export interface MappingRule {
-  id: string;
+export interface MappingRule extends NamedBase {
   mapping: string;
-  name: string;
   elements: { ID: string }[];
 }

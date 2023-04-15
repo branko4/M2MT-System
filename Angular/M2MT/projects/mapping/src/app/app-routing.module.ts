@@ -8,6 +8,7 @@ import { HomeScreenComponent } from './components/screen-components/home-screen/
 import { MappingListComponent } from './components/screen-components/mapping-list/mapping-list.component';
 import { MappingRuleListComponent } from './components/screen-components/mapping-rule-list/mapping-rule-list.component';
 import { MappingComponent } from './components/screen-components/mapping/mapping.component';
+import { AddElementComponent } from './components/screen-components/add-element/add-element.component';
 
 const routes: Routes = [
   { 
@@ -30,6 +31,7 @@ const routes: Routes = [
     component: MappingComponent,
     children: [
       {path: 'delete', component: DeleteMappingRuleComponent },
+      {path: ':modelID/add', component: AddElementComponent}
     ]
    },
   { path: '', component: HomeScreenComponent },

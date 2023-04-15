@@ -64,12 +64,12 @@ namespace M2MT.Mapping.Controllers
             {
                 Left = new ModelSideDTO
                 {
-                    ModelId = modelFrom,
+                    Model = modelFrom,
                     elements = elements.Where((element) => element.Model == mapping.modelFrom)
                 },
                 Right = new ModelSideDTO
                 {
-                    ModelId = modelTo,
+                    Model = modelTo,
                     elements = elements.Where((element) => element.Model == mapping.modelTo)
                 }
             };

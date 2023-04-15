@@ -195,6 +195,17 @@ export class MappingService implements OnDestroy {
     return this.http.post<MappingRelation>(`/api/mappingrelation`, relation);
   }
 
+  AddElementToMappingRule(mappingRuleID: string, elementID: string) {
+    return this.http.post<MappingRule>('/api/mappingrule/element', {
+      "mappingRule": {
+        "id": mappingRuleID
+      },
+      "element": {
+        "id": elementID
+      }
+    });
+  }
+
   DeleteMapping(mappingId: string) {
     return this.http.delete<Mapping>(`/api/mapping/${mappingId}`);
   }

@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { NamedBase } from 'projects/shared/src/lib/Data/models/base.model';
+import { Element } from 'projects/shared/src/lib/Data/models/element.model';
 
 export enum PositionInList {
   FIRST,
@@ -14,11 +16,11 @@ export enum PositionInList {
 })
 export class EmptyElementComponent implements OnInit {
   private static readonly HORIZONTAL_LINE = "hor-line";
-  @Input() element: {name: string} = {name: "No element given"};
+  @Input() element: NamedBase = {name: "No element given", id: ""};
   @Input() positionInList: PositionInList = PositionInList.FIRST;
   @Input() isRootElement = true;
   @Input() isLast = true;
-  @Output() clicked = new EventEmitter<{name: string}>();
+  @Output() clicked = new EventEmitter<NamedBase>();
   classes = EmptyElementComponent.HORIZONTAL_LINE;
 
   ngOnInit(): void {

@@ -1,0 +1,21 @@
+@use '../../../../../../shared/src/lib/styles/variables';
+
+h2 { 
+  margin: 0;
+  text-align: center;
+}
+
+$spacing: 20px;
+
+header {
+  padding: variables.$spacing;
+  background-color: variables.$theme-primary;
+  border-radius: variables.$border-radius variables.$border-radius 0 0;
+}
+
+.select-area, .stepper-placeholder {
+  width: 600px;
+  height: 450px;
+  display: block;
+  margin: variables.$spacing;
+}

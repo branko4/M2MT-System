@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Element } from 'projects/shared/src/lib/Data/models/element.model';
 
 @Component({
@@ -8,4 +8,11 @@ import { Element } from 'projects/shared/src/lib/Data/models/element.model';
 })
 export class ElementTabComponent {
   @Input() elements: Element[] = [];
+  @Input() activeElement?: Element;
+  @Input() modelID: string = "";
+  @Output() activeElementChange = new EventEmitter<Element>()
+
+  changeActiveElement(element: Element) {
+    this.activeElementChange.emit(element);
+  }
 }

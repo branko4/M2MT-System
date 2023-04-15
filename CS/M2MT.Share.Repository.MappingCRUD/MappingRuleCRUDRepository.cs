@@ -22,7 +22,7 @@ namespace M2MT.Shared.Repository.Mapping
         public async Task AddElement(Guid mappingRule, Guid element)
         {
             await dbConnection.ExecuteAsync(
-                "INSERT INTO mapping.\"Coupled_elements\" values(@Element, @MappingRule);",
+                "INSERT INTO mapping.\"Coupled_elements\" (\"Element\", \"Mapping_rule\") values(@Element, @MappingRule);",
                 new CoupledElement { Element = element, MappingRule = mappingRule }
                 );
             return;

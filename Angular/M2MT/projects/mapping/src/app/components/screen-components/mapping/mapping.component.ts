@@ -20,6 +20,8 @@ export class MappingComponent implements OnInit, OnDestroy {
 
   elementsLeft: Element[] = [];
   elementsRight: Element[] = [];
+  modelIDLeft: string = "";
+  modelIDRight: string = "";
 
   activeElementLeft?: Element;
   activeElementRight?: Element;
@@ -39,6 +41,9 @@ export class MappingComponent implements OnInit, OnDestroy {
         this.elementsRight = mappingRule.right.elements;
         this.activeElementLeft = this.elementsLeft[0];
         this.activeElementRight = this.elementsRight[0];
+        
+        this.modelIDLeft = mappingRule.left.model.id;
+        this.modelIDRight = mappingRule.right.model.id;
       });
     });
 
@@ -57,6 +62,16 @@ export class MappingComponent implements OnInit, OnDestroy {
         this.highLightArrows = highLight;
       })
     );
+  }
+
+  leftActiveElementChange(element: Element) {
+    if (element === this.activeElementLeft || element === undefined) return;
+    this.activeElementLeft = element;
+  }
+
+  rightActiveElementChange(element: Element) {
+    if (element === this.activeElementRight || element === undefined) return;
+    this.activeElementRight = element;
   }
 
   ngOnDestroy(): void {

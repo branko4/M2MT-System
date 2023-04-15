@@ -1,6 +1,6 @@
+import { Base } from "./base.model";
 
-export interface MappingRelation {
-  id: string; 
+export interface MappingRelation extends Base {
   mappingRule: string;
   attributeLeft: string;
   attributeRight: string;

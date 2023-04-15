@@ -1,1 +1,12 @@
-<p>add-element-component works!</p>
+<lib-pop-up (backgroundClick)="cancel()">
+  <header>
+    <h2>Select element</h2>
+  </header>
+  <div *ngIf="modelRef !== undefined" class="select-area">
+    <app-select-element (selected)="selected($event)" [modelRef]="modelRef"></app-select-element>
+  </div>
+  <div class="control">
+    <button class="danger text-button" (click)="cancel()">Cancel</button>
+    <button class="primary button" (click)="add()" [disabled]="!addable">Add</button>
+  </div>
+</lib-pop-up>

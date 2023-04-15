@@ -1,9 +1,9 @@
 <app-home-header></app-home-header>
+<nav class="model-nav">
+  <app-element-tab [elements]="elementsLeft" [activeElement]="activeElementLeft" [modelID]="modelIDLeft" (activeElementChange)="leftActiveElementChange($event)"></app-element-tab>
+  <app-element-tab [elements]="elementsRight" [activeElement]="activeElementRight" [modelID]="modelIDRight" (activeElementChange)="rightActiveElementChange($event)"></app-element-tab>
+</nav>
 <main>
-  <div>
-    <app-element-tab [elements]="elementsLeft"></app-element-tab>
-    <app-element-tab [elements]="elementsRight"></app-element-tab>
-  </div>
   <app-model-side 
     [modelSide]="LEFT_MODEL_SIDE" 
     [class.highlight]="highLightLeft" 

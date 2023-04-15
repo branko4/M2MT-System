@@ -1,6 +1,5 @@
+import { NamedBase } from "./base.model";
 
-export interface Attribute {
-  id: string; 
-  name: string;
+export interface Attribute extends NamedBase {
   element: string;
 }
