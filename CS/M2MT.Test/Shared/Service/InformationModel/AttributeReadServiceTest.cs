@@ -10,26 +10,25 @@ namespace M2MT.Test.Shared.Service.InformationModel
 {
     public class AttributeReadServiceTest : GenericReadServiceTest<AttributeReadService, AttributeModel, IAttributeReadRepository>
     {
+        public AttributeReadServiceTest()
+        {
+            base.ListOfAllObjects = model.KnowAttributes;
+        }
+
+        // TODO FIXME, might be wrong implemented, now the max and mim are tested by instance of, however it would be more logical if that would be done for the know attributes
         [Fact]
         public void Constructor_RepositoryIsFake_IsInstanceOfIInformationModelReadService()
         {
-            BuildAUutInstance(WITH_NO_CONFIGURATION).IsInstanceOf<IAttributeReadService>();
+            BuildAUutInstance().IsInstanceOf<IAttributeReadService>();
         }
 
-        protected override UUTBuilder<AttributeReadService> BuildAUutInstance(MethodConfiguration<IAttributeReadRepository>[] conf)
+        protected override UUTBuilder<AttributeReadService> BuildAUutInstance()
         {
             return TestA
                 .ObjectWithType<AttributeReadService>()
+                // attribute repo
                 .AddBuildedParameterAs(A.Fake<IAttributeReadRepository>())
-                .WithMethodConfiguration(conf);
-        }
-
-        protected override MethodConfiguration<IAttributeReadRepository> BuildConfForUutDepenedencyGetAll()
-        {
-            return new MethodConfiguration<IAttributeReadRepository>((repoFake) =>
-            {
-                return A.CallTo(() => repoFake.GetAll()).Returns(new List<AttributeModel>());
-            });
+                .WithMethodConfiguration(GenericFakes.GetReadMethodConfiguration<IAttributeReadRepository, AttributeModel>(model.KnowAttributes));
         }
     }
 }

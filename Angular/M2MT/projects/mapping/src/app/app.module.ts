@@ -1,6 +1,7 @@
 import { NgModule }                               from '@angular/core';
 import { BrowserModule }                          from '@angular/platform-browser';
 import { FormsModule }                            from '@angular/forms';
+import { HttpClientModule }                       from '@angular/common/http';
 import { SharedModule }                           from 'projects/shared/src/public-api';
 
 import { AppRoutingModule }                       from './app-routing.module';
@@ -10,7 +11,7 @@ import { CreateMappingComponent }                 from './components/screen-comp
 import { CreateMappingRuleComponent }             from './components/screen-components/create-mapping-rule/create-mapping-rule.component';
 import { MappingListComponent }                   from './components/screen-components/mapping-list/mapping-list.component';
 import { MappingRuleListComponent }               from './components/screen-components/mapping-rule-list/mapping-rule-list.component';
-import { ModelsComponent }                        from './components/screen-components/models/models.component';
+import { ModelsComponent }                        from './components/screen-components/model/models.component';
 import { HomeScreenComponent }                    from './components/screen-components/home-screen/home-screen.component';
 import { HomeHeaderComponent }                    from './components/screen-components/home-screen/home-header/home-header.component';
 import { MappingComponent }                       from './components/screen-components/mapping/mapping.component';
@@ -65,6 +66,7 @@ import { DeleteMappingRuleComponent } from './components/screen-components/delet
     AppRoutingModule,
     SharedModule,
     FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

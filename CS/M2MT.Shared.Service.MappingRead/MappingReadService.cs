@@ -1,6 +1,8 @@
 ﻿using M2MT.Shared.IRepository.Mapping;
 using M2MT.Shared.IService.Mapping;
+using M2MT.Shared.Model;
 using M2MT.Shared.Model.Mapping;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -18,6 +20,11 @@ namespace M2MT.Shared.Service.Mapping
         public async Task<IEnumerable<MappingModel>> GetAll()
         {
             return await _repository.GetAll();
+        }
+
+        public Task<MappingModel> GetOne(Guid refTo)
+        {
+            return _repository.GetOne(refTo);
         }
     }
 }

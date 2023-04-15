@@ -1,5 +1,10 @@
-<div class="tab" *ngFor="let element of elements">
+<div class="tab" *ngFor="let element of elements" (click)="changeActiveElement(element)">
   <div></div>
   <span >{{element.name}}</span>
+  <div></div>
+</div>
+<div class="tab" routerLink="{{modelID}}/add">
+  <div></div>
+  <span> + </span>
   <div></div>
 </div>

@@ -1,20 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MappingService } from '../../../service/mapping.service';
 
 @Component({
   selector: 'app-delete-mapping-rule',
   templateUrl: './delete-mapping-rule.component.html',
   styleUrls: ['./delete-mapping-rule.component.scss']
 })
-export class DeleteMappingRuleComponent {
+export class DeleteMappingRuleComponent implements OnInit{
   readonly returnLinkId = "delete-mapping-rule-return-link";
 
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  mappingRule?: string;
 
+  constructor(private router: Router, private route: ActivatedRoute, private mappingService: MappingService) { }
+
+  ngOnInit() {
+    this.route.parent?.params.subscribe(params => {
+      this.mappingRule = params['mappingRuleID'];
+    });
+  }
 
   delete() {
-    // call to service
-    this.back();
+    if(this.mappingRule === undefined) return;
+    this.mappingService.DeleteMappingRule(this.mappingRule).subscribe(() => {
+      this.back();
+    })
   }
 
   cancel() {

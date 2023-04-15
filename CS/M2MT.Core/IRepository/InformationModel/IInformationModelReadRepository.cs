@@ -1,12 +1,12 @@
 ﻿
-using System.Collections.Generic;
+using System;
 using System.Threading.Tasks;
 using IModel = M2MT.Shared.Model.InformationModel.Model;
 
 namespace M2MT.Shared.IRepository.InformationModel
 {
-    public interface IInformationModelReadRepository
+    public interface IInformationModelReadRepository : IReadRepository<IModel>
     {
-        public Task<IEnumerable<IModel>> GetModels();
+     
     }
 }

@@ -21,12 +21,22 @@ app-svg {
   min-height: 90%;
 }
 
+$model-nav-height: 29px;
+
+.model-nav {
+  width: variables.$main-width;
+  margin: variables.$main-margin auto;
+  margin-bottom: 0;
+  height: $model-nav-height;
+}
+
 $mapping-actions-height: 80px;
 
 main {
+  margin-top: 0px;
   overflow: auto;
   position: relative;
-  height: calc(100vh - (variables.$header-footer-height + $mapping-actions-height + 2* $border-size));
+  height: calc(100vh - (variables.$header-footer-height + $mapping-actions-height + 2* $border-size + $model-nav-height));
   min-height: 0;
   background-color: variables.$theme-primary-negative-accent;
   border: solid 2px variables.$theme-primary
@@ -38,4 +48,9 @@ app-mapping-actions {
   border-bottom-color: solid variables.$theme-secundary $border-size;
   display: block;
   background-color: variables.$theme-primary;
+}
+
+app-element-tab {
+  width: 50%;
+  display: inline-block;
 }

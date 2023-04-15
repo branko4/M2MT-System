@@ -10,7 +10,9 @@ namespace M2MT.Shared.Entity.InformationModel
     {
         public Guid ID { get; set; }
         public Guid Model { get; set; }
+        public Guid Parent { get; set; }
         public string Name { get; set; }
+        public IEnumerable<string> Attributes { get; set; } = new List<string>();
 
         public ElementEntity() { }
 
@@ -18,12 +20,27 @@ namespace M2MT.Shared.Entity.InformationModel
         {
             ID = attribute.ID;
             Model = attribute.Model;
+            Parent = attribute.Parent;
             Name = attribute.Name;
         }
 
         public Element Convert()
         {
-            return new Element() { Model = Model, ID = ID, Name = Name };
+            var AttributeModels =  new List<AttributeModel>();
+
+            foreach (var attr in Attributes)
+            {
+                var propOfAttr = attr
+                    .Split(',');
+
+                var attrModel = new AttributeModel {
+                    ID = new Guid(propOfAttr[0].Replace("(", "")), 
+                    Name = propOfAttr[1], 
+                    Element = new Guid(propOfAttr[2].Replace(")","")) 
+                };
+                AttributeModels.Add(attrModel);
+            }
+            return new Element() { Model = Model, ID = ID, Name = Name, Parent = Parent, Attributes = AttributeModels};
         }
     }
 }

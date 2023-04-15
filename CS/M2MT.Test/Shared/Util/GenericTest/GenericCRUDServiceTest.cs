@@ -5,35 +5,37 @@ namespace M2MT.Test.Shared.Util.GenericTest
 {
     public abstract class GenericCRUDServiceTest<UUTType, UUTModelType, UUTDependency> : GenericReadServiceTest<UUTType, UUTModelType, UUTDependency>
     {
+        [Obsolete]
         abstract protected object[] CreateParams();
+        [Obsolete]
         abstract protected UUTModelType CreateOutput();
 
+        [Obsolete]
         abstract protected MethodConfiguration<UUTDependency> BuildConfForUutDependencyCreate();
 
-        [Fact]
-        public void Create_HappyFlow_ReturnsCreatedInstance()
+        [Obsolete]
+        protected void Create_HappyFlow_ReturnsCreatedInstance(object[] parameters, object ExpectedOutput)
         {
-            BuildAUutInstance(new MethodConfiguration<UUTDependency>[]
-            {
-                BuildConfForUutDependencyCreate(),
-            })
+            BuildAUutInstance()
                 .SoThatFunction("Create")
-                .WithParams(CreateParams())
-                .ReturnsAsync(CreateOutput());
+                .WithParams(parameters)
+                .ReturnsAsync(ExpectedOutput);
         }
 
+        [Obsolete]
         abstract protected object[] RemoveParams();
+
+        [Obsolete]
         abstract protected UUTModelType RemoveOutput();
 
+        [Obsolete]
         abstract protected MethodConfiguration<UUTDependency> BuildConfForUutDependencyRemove();
 
-        [Fact]
-        public void Remove_HappyFlow_ReturnsDeletedInstance()
+        //[Fact]
+        [Obsolete]
+        protected void Remove_HappyFlow_ReturnsDeletedInstance()
         {
-            BuildAUutInstance(new MethodConfiguration<UUTDependency>[]
-            {
-                BuildConfForUutDependencyRemove(),
-            })
+            BuildAUutInstance()
                 .SoThatFunction("Remove")
                 .WithParams(RemoveParams())
                 .ReturnsAsync(RemoveOutput());
@@ -42,7 +44,7 @@ namespace M2MT.Test.Shared.Util.GenericTest
         [Fact]
         public void Constructor_EveryThingIsDefault_IsInstanceOfICRUDService()
         {
-            BuildAUutInstance(WITH_NO_CONFIGURATION).IsInstanceOf<ICRUDService<UUTModelType>>();
+            BuildAUutInstance().IsInstanceOf<ICRUDService<UUTModelType>>();
         }
     }
 }

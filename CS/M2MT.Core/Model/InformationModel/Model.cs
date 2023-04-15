@@ -4,9 +4,8 @@ using System.Text;
 
 namespace M2MT.Shared.Model.InformationModel
 {
-    public class Model
+    public class Model : Base
     {
-        public Guid ID { get; set; }
         public string Name { get; set; }
         public string Source { get; set; }
     }

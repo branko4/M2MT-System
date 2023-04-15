@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { BasicElement } from 'projects/shared/src/lib/Data/models/element.model';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Element } from 'projects/shared/src/lib/Data/models/element.model';
 
 @Component({
   selector: 'app-element-tab',
@@ -7,5 +7,12 @@ import { BasicElement } from 'projects/shared/src/lib/Data/models/element.model'
   styleUrls: ['./element-tab.component.scss']
 })
 export class ElementTabComponent {
-  @Input() elements: BasicElement[] = [];
+  @Input() elements: Element[] = [];
+  @Input() activeElement?: Element;
+  @Input() modelID: string = "";
+  @Output() activeElementChange = new EventEmitter<Element>()
+
+  changeActiveElement(element: Element) {
+    this.activeElementChange.emit(element);
+  }
 }

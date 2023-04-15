@@ -1,4 +1,6 @@
-import { NamedBase } from "./_base.model";
+import { NamedBase } from "./base.model";
 
-export interface Mapping extends NamedBase {
+export interface Mapping extends NamedBase{
+  modelFrom: string;
+  modelTo: string;
 }

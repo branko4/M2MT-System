@@ -10,27 +10,24 @@ namespace M2MT.Test.Shared.Service.Mapping
 {
     public class MappingReadServiceTest : GenericReadServiceTest<MappingReadService, MappingModel, IMappingReadRepository>
     {
+        public MappingReadServiceTest()
+        {
+            base.ListOfAllObjects = model.KnowMappings;
+        }
 
         [Fact]
         public void Constructor_RepositoryIsFake_IsInstanceOfIMappingReadService()
         {
-            BuildAUutInstance(WITH_NO_CONFIGURATION).IsInstanceOf<IMappingReadService>();
+            BuildAUutInstance().IsInstanceOf<IMappingReadService>();
         }
 
-        protected override UUTBuilder<MappingReadService> BuildAUutInstance(MethodConfiguration<IMappingReadRepository>[] conf)
+        protected override UUTBuilder<MappingReadService> BuildAUutInstance()
         {
             return TestA
                 .ObjectWithType<MappingReadService>()
+                // mapping repo
                 .AddBuildedParameterAs(A.Fake<IMappingReadRepository>())
-                .WithMethodConfiguration(conf);
-        }
-
-        protected override MethodConfiguration<IMappingReadRepository> BuildConfForUutDepenedencyGetAll()
-        {
-            return new MethodConfiguration<IMappingReadRepository>((repoFake) =>
-            {
-                return A.CallTo(() => repoFake.GetAll()).Returns(new List<MappingModel>());
-            });
+                .WithMethodConfiguration(GenericFakes.GetReadMethodConfiguration<IMappingReadRepository, MappingModel>(model.KnowMappings));
         }
     }
 }

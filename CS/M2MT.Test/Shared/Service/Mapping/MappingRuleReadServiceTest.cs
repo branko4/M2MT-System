@@ -9,27 +9,27 @@ namespace M2MT.Test.Shared.Service.Mapping
 {
     public class MappingRuleReadServiceTest : GenericReadServiceTest<MappingRuleReadService, MappingRule, IMappingRuleReadRepository>
     {
+        public MappingRuleReadServiceTest()
+        {
+            base.ListOfAllObjects = model.KnowMappingRules;
+        }
 
         [Fact]
         public void Constructor_RepositoryIsFake_IsInstanceOfIMappingReadService()
         {
-            BuildAUutInstance(WITH_NO_CONFIGURATION).IsInstanceOf<IMappingRuleReadService>();
+            BuildAUutInstance().IsInstanceOf<IMappingRuleReadService>();
         }
 
-        protected override UUTBuilder<MappingRuleReadService> BuildAUutInstance(MethodConfiguration<IMappingRuleReadRepository>[] conf)
+        protected override UUTBuilder<MappingRuleReadService> BuildAUutInstance()
         {
             return TestA
                 .ObjectWithType<MappingRuleReadService>()
+                // mapping repo
                 .AddBuildedParameterAs(A.Fake<IMappingRuleReadRepository>())
-                .WithMethodConfiguration(conf);
-        }
-
-        protected override MethodConfiguration<IMappingRuleReadRepository> BuildConfForUutDepenedencyGetAll()
-        {
-            return new MethodConfiguration<IMappingRuleReadRepository>((repoFake) =>
-            {
-                return A.CallTo(() => repoFake.GetAll()).Returns(new List<MappingRule>());
-            });
+                .WithMethodConfiguration(GenericFakes.GetReadMethodConfiguration<IMappingRuleReadRepository, MappingRule>(model.KnowMappingRules))
+                // mapping relation crud repo
+                .AddBuildedParameterAs(A.Fake<IMappingRelationReadRepository>())
+                .WithMethodConfiguration(GenericFakes.GetReadMethodConfiguration<IMappingRelationReadRepository, MappingRelation>(model.KnowMappingRelations));
         }
     }
 }

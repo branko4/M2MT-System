@@ -1,6 +1,9 @@
-<div class="head">
-  <app-empty-element [element]="rootElement" [positionInList]="positionInList" [isRootElement]="isRootElement" [isLast]="rootElement.childElements.length === 0" (clicked)="clicked($event)"></app-empty-element>
+<div *ngIf="rootElement !== undefined">
+  <div class="head">
+    <app-empty-element [element]="rootElement" [positionInList]="positionInList" [isRootElement]="isRootElement" [isLast]="rootElement.childeren.length === 0" (clicked)="clicked($event)"></app-empty-element>
+  </div>
+  <div class="container">
+    <app-select-element *ngFor="let element of rootElement.childeren; index as i" [rootElement]="element" [positionInList]="position(i)" [isRootElement]="FALSE" (selected)="clicked($event)"></app-select-element>
+  </div>
 </div>
-<div class="container">
-  <app-select-element *ngFor="let element of rootElement.childElements; index as i" [rootElement]="element" [positionInList]="position(i)" [isRootElement]="FALSE" (selected)="clicked($event)"></app-select-element>
-</div>
+<span *ngIf="rootElement === undefined">Loading...</span>

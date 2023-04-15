@@ -9,8 +9,8 @@
       <span *ngIf="element" >{{element.name}}</span>
     </header>
     <div class="attributes">
-      <div *ngIf="elementWithValues">
-        <div class="attribute" *ngFor="let attribute of elementWithValues.attributes" (click)="onSelected(attribute)">
+      <div *ngIf="element">
+        <div class="attribute" *ngFor="let attribute of element.attributes" (click)="onSelected(attribute)" id="{{formatAttributeID(attribute)}}">
           <span>{{attribute.name}}</span>
         </div>
       </div>

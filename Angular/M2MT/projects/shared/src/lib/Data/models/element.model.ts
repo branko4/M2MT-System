@@ -1,4 +1,8 @@
-import { NamedBase } from "./_base.model";
+import { Attribute } from "./attribute.model";
+import { NamedBase } from "./base.model";
 
-export interface BasicElement extends NamedBase {
+export interface  Element extends NamedBase {
+  model: string;
+  parent: string;
+  attributes: Attribute[];
 }
